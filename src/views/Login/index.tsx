@@ -33,7 +33,7 @@ export default class Login extends Component<ILoginProps, ILoginState> {
         this.getCaptcha()
     }
 
-    private getCaptcha = () => {
+    private getCaptcha = (): void => {
         Axios.get('/api/users/captcha').then(res => {
             this.setState({
                 captchaSvg: res.data
@@ -41,41 +41,23 @@ export default class Login extends Component<ILoginProps, ILoginState> {
         })
     }
 
-    private usernameFoucs = () => {
-        this.setState({
-            isUserFocus: true
-        })
-    }
-
-    private usernameBlur = () => {
+    private usernameBlur = (): void => {
         let container: HTMLInputElement = ReactDOM.findDOMNode(this.refs['username']) as HTMLInputElement
         this.setState({ username: container.value })
         !container.value && this.setState({
             isUserFocus: !this.state.isUserFocus
         })
     }
-
-    private passwordFocus = () => {
-        this.setState({
-            isPasswordFocus: true
-        })
-    }
-
-    private passwordBlur = () => {
+    
+    private passwordBlur = (): void => {
         let container: HTMLInputElement = ReactDOM.findDOMNode(this.refs['password']) as HTMLInputElement
         this.setState({ password: container.value })
         !container.value && this.setState({
             isPasswordFocus: !this.state.isPasswordFocus
         })
     }
-
-    private captchaFocus = () => {
-        this.setState({
-            isCaptcha: true
-        })
-    }
-
-    private captchaBlur = () => {
+    
+    private captchaBlur = (): void => {
         let container: HTMLInputElement = ReactDOM.findDOMNode(this.refs['captcha']) as HTMLInputElement
         this.setState({ captcha: container.value })
         !container.value && this.setState({
@@ -83,15 +65,17 @@ export default class Login extends Component<ILoginProps, ILoginState> {
         })
     }
 
-    private failToast = (msg: string): void => {
-        Toast.fail(msg, 1, () => this.getCaptcha());
-    }
+    private usernameFoucs = (): void => this.setState({ isUserFocus: true })
+    private passwordFocus = (): void => this.setState({ isPasswordFocus: true })
+    private captchaFocus = (): void => this.setState({ isCaptcha: true })
 
-    private successToast = (msg: string): void => {
-        Toast.success(msg, 1, () => this.props.history.push('/'));
-    }
+    private failToast = (msg: string): void => Toast.fail(msg, 1, () => this.getCaptcha());
 
-    private submit = () => {
+    private successToast = (msg: string): void => Toast.success(msg, 1, () => this.props.history.push('/'));
+
+    private refreshCaptcha = (): void => this.getCaptcha()
+
+    private submit = (): void => {
         const { username, password, captcha } = this.state
         const data = { username, password, captcha }
         Axios.post('/api/users/login', data).then(res => {
@@ -100,7 +84,6 @@ export default class Login extends Component<ILoginProps, ILoginState> {
             code === 401 && this.failToast('账号或密码输入错误')
             code === 200 && this.successToast('登陆成功')
         })
-        
     }
 
     public render() {
@@ -119,7 +102,7 @@ export default class Login extends Component<ILoginProps, ILoginState> {
                     <div className={style.txtc}>
                         <input type="text" ref="captcha" className={this.state.isCaptcha ? style.focusCaptcha : ''} onFocus={this.captchaFocus} onBlur={this.captchaBlur}/>
                         <span data-placeholder="Captcha"></span>
-                        <p dangerouslySetInnerHTML={{ __html: this.state.captchaSvg }} ></p>
+                        <p dangerouslySetInnerHTML={{ __html: this.state.captchaSvg }} onClick={this.refreshCaptcha}/>
                     </div>
                     <input type="submit" className={style.logbtn} value='Login' onClick={this.submit}/>
                     <div className={style.bottomText}>

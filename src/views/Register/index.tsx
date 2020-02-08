@@ -35,23 +35,11 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
             })
         })
     }
-
-    private usernameFoucs = ():void => {
-        this.setState({
-            isUserFocus: true
-        })
-    }
-
+    
     private usernameBlur = (): void => {
         let container: HTMLInputElement = ReactDOM.findDOMNode(this.refs['username']) as HTMLInputElement
         !container.value && this.setState({
             isUserFocus: !this.state.isUserFocus
-        })
-    }
-
-    private passwordFocus = (): void => {
-        this.setState({
-            isPasswordFocus: true
         })
     }
 
@@ -61,76 +49,71 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
             isPasswordFocus: !this.state.isPasswordFocus
         })
     }
-
-    private captchaFocus = (): void => {
-        this.setState({
-            isCaptcha: true
-        })
-    }
-
+    
+    
     private captchaBlur = (): void => {
         let container: HTMLInputElement = ReactDOM.findDOMNode(this.refs['captcha']) as HTMLInputElement
         !container.value && this.setState({
             isCaptcha: !this.state.isCaptcha
         })
     }
-    private telFocus = (): void => {
-        this.setState({
-            isTelephone: true
-        })
-    }
-
+    
     private telBlur = (): void => {
         let container: HTMLInputElement = ReactDOM.findDOMNode(this.refs['telephone']) as HTMLInputElement
         !container.value && this.setState({
             isTelephone: !this.state.isTelephone
         })
     }
+    
+    private usernameFoucs = ():void => this.setState({ isUserFocus: true })
+    private passwordFocus = (): void => this.setState({ isPasswordFocus: true })
+    private captchaFocus = (): void => this.setState({ isCaptcha: true })
+    private telFocus = (): void => this.setState({ isTelephone: true })
 
-    private failToast = (): void => {
-        Toast.fail('验证码输入错误', 1, () => this.getCaptcha());
-    }
+    private failToast = (): void => Toast.fail('验证码输入错误', 1, () => this.getCaptcha())
 
-    private submit = () => {
-        let username: HTMLInputElement = ReactDOM.findDOMNode(this.refs['username']) as HTMLInputElement
-        let password: HTMLInputElement = ReactDOM.findDOMNode(this.refs['password']) as HTMLInputElement
-        let telephone: HTMLInputElement = ReactDOM.findDOMNode(this.refs['telephone']) as HTMLInputElement
-        let captcha: HTMLInputElement = ReactDOM.findDOMNode(this.refs['captcha']) as HTMLInputElement
-        let data = { username: username.value, password: password.value, telephone: telephone.value, captcha: captcha.value, createDate: new Date() }
+    private refreshCaptcha = (): void => this.getCaptcha()
+
+    private submit = (): void => {
+        const username: HTMLInputElement = ReactDOM.findDOMNode(this.refs['username']) as HTMLInputElement
+        const password: HTMLInputElement = ReactDOM.findDOMNode(this.refs['password']) as HTMLInputElement
+        const telephone: HTMLInputElement = ReactDOM.findDOMNode(this.refs['telephone']) as HTMLInputElement
+        const captcha: HTMLInputElement = ReactDOM.findDOMNode(this.refs['captcha']) as HTMLInputElement
+        const data = { username: username.value, password: password.value, telephone: telephone.value, captcha: captcha.value, createDate: new Date() }
         Axios.post('/api/users/register', data).then(res => {
             const { code } = res.data
             code === 400 && this.failToast()
         })
     }
 
-  public render() {
-    return (
-        <div>
-            <div className={style.loginForm}>
-                <h1>Register</h1>
-                <div className={style.txtb}>
-                    <input type="text" ref="username" className={this.state.isUserFocus ? style.focus : ''} onFocus={this.usernameFoucs} onBlur={this.usernameBlur}/>
-                    <span data-placeholder='Username'></span>
-                </div>
-                <div className={style.txtb}>
-                    <input type="password" ref="password" className={this.state.isPasswordFocus ? style.focus : ''} onFocus={this.passwordFocus} onBlur={this.passwordBlur}/>
-                    <span data-placeholder="Password"></span>
-                </div>
-                <div className={style.txtb}>
-                    <input type="tel" ref="telephone" className={this.state.isTelephone ? style.focus : ''} onFocus={this.telFocus} onBlur={this.telBlur}/>
-                    <span data-placeholder="telephone"></span>
-                </div>
-                <div className={style.txtc}>
-                    <input type="text" ref="captcha" className={this.state.isCaptcha ? style.focusCaptcha : ''} onFocus={this.captchaFocus} onBlur={this.captchaBlur}/>
-                    <span data-placeholder="Captcha"></span>
-                    <p dangerouslySetInnerHTML={{ __html: this.state.captcha }} ></p>
-                </div>
-                <input type="submit" className={style.logbtn} value='Register' disabled={!(this.state.isCaptcha || this.state.isPasswordFocus || this.state.isTelephone|| this.state.isUserFocus)} onClick={this.submit}/>
-                <div className={style.bottomText}>
-                    <NavLink to="/login">⬅Come back</NavLink>
+    public render() {
+        return (
+            <div>
+                <div className={style.loginForm}>
+                    <h1>Register</h1>
+                    <div className={style.txtb}>
+                        <input type="text" ref="username" className={this.state.isUserFocus ? style.focus : ''} onFocus={this.usernameFoucs} onBlur={this.usernameBlur}/>
+                        <span data-placeholder='Username'></span>
+                    </div>
+                    <div className={style.txtb}>
+                        <input type="password" ref="password" className={this.state.isPasswordFocus ? style.focus : ''} onFocus={this.passwordFocus} onBlur={this.passwordBlur}/>
+                        <span data-placeholder="Password"></span>
+                    </div>
+                    <div className={style.txtb}>
+                        <input type="tel" ref="telephone" className={this.state.isTelephone ? style.focus : ''} onFocus={this.telFocus} onBlur={this.telBlur}/>
+                        <span data-placeholder="telephone"></span>
+                    </div>
+                    <div className={style.txtc}>
+                        <input type="text" ref="captcha" className={this.state.isCaptcha ? style.focusCaptcha : ''} onFocus={this.captchaFocus} onBlur={this.captchaBlur}/>
+                        <span data-placeholder="Captcha"></span>
+                        <p dangerouslySetInnerHTML={{ __html: this.state.captcha }} onClick={this.refreshCaptcha}/>
+                    </div>
+                    <input type="submit" className={style.logbtn} value='Register' disabled={!(this.state.isCaptcha || this.state.isPasswordFocus || this.state.isTelephone|| this.state.isUserFocus)} onClick={this.submit}/>
+                    <div className={style.bottomText}>
+                        <NavLink to="/login">⬅Come back</NavLink>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-  }
+        )
+    }
 }

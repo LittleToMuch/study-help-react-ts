@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {Button} from "antd-mobile";
-class Home extends React.Component {
+import { RouteComponentProps } from 'react-router-dom';
+
+interface IHomeProps extends RouteComponentProps {}
+class Home extends React.Component<IHomeProps> {
     render() {
         return (
             <div>

@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-class Knowledge extends Component {
+interface IKonowledgeProps extends RouteComponentProps{}
+
+class Knowledge extends Component<IKonowledgeProps> {
+    
     render() {
+        setTimeout(() => {
+            console.log(2);
+        }, 2000)
         return (
             <div>
-                Knowledge
+                Knowledgeasldjaldlkasdkasdklnzxlkcjasld
             </div>
         );
     }

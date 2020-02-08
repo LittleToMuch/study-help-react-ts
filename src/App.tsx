@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Button } from 'antd-mobile';
 import Tabbar from './components/Tabbar';
 // import './App.css';
 

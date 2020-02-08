@@ -29,10 +29,9 @@ const Experience = (props: IExperienceProps) => {
     
     return (
         <div className={style.experience}>
-            Experience
-            {num}
+            Experience({num})
             <p className={style.box}></p>
-            <Button className={style.button} type="primary" size="small" onClick={handleClick}>点我</Button>
+            <Button className={style.button} type="primary" size="small" onClick={handleClick}>点我({num})</Button>
         </div>
     );
 }
