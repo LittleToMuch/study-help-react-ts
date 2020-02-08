@@ -1,0 +1,127 @@
+.loginForm{
+    width: 100%;
+    background: #f7f7f7;
+    height: 100%;
+    padding: .8rem .4rem;
+    /* border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%); */
+}
+
+.loginForm h1{
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1.6rem;
+}
+
+.txtb{
+    position: relative;
+    margin: .8rem 0;
+}
+
+.txtb input{
+    font-size: .4rem;
+    color: #3e3e3e;
+    border: none;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 .05rem;
+    height: 1rem;
+    border-bottom: .04rem solid #adadad;
+}
+
+.txtb span::before{
+    content:attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    left: .05rem;
+    color: #aaaaaa;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: .5s;
+}
+
+.txtb span::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: .04rem;
+    background: linear-gradient(120deg,cyan,orange);
+    transition: .5s;
+}
+
+.focus + span::before{
+    top: -.1rem;
+}
+
+.focus + span::after{
+    width: 100%;
+}
+
+.logbtn{
+  display: block;
+  width: 100%;
+  height: 1rem;
+  border: none;
+  background: linear-gradient(120deg,cyan,orange);
+  color: #fff;
+  transition: .5s;
+  margin-bottom: .5rem;
+}
+
+.txtc {
+    position: relative;
+    margin: .8rem 0;
+}
+
+.txtc input {
+    font-size: .4rem;
+    color: #3e3e3e;
+    border: none;
+    width: 30%;
+    outline: none;
+    background: none;
+    padding: 0 .05rem;
+    height: 1rem;
+    border-bottom: .04rem solid #adadad;
+}
+
+.txtc span::before{
+    content:attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    left: .05rem;
+    color: #aaaaaa;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: .5s;
+}
+
+.txtc span::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: .04rem;
+    background: linear-gradient(120deg,cyan,orange);
+    transition: .5s;
+}
+
+.txtc p {
+    display: inline;
+    vertical-align: bottom;
+}
+
+.focusCaptcha + span::before{
+    top: -.1rem;
+}
+
+.focusCaptcha + span::after{
+    width: 30%;
+}
