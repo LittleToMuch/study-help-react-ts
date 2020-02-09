@@ -18,6 +18,7 @@ const router = (
         <App>
             <Switch>
                 <Suspense fallback={ <Loading /> }>
+                    <Redirect from="/" to="/article" exact/>
                     <Route path="/article" render={(props: RouteComponentProps) => {
                         return (
                             <Article { ...props }> 
@@ -37,7 +38,6 @@ const router = (
                     <Route path="/home" render={(props: RouteComponentProps) => (
                         isLogin() ? <Home { ...props }/> : <Login { ...props }/>
                     )}/>
-                    <Redirect from="/" to="/article/experience"/>
                 </Suspense>
             </Switch>
         </App>

@@ -1,18 +1,29 @@
 import * as React from 'react';
 import style from './index.module.scss'
-import { NavLink } from 'react-router-dom';
-export interface IArticleHeaderProps {
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { WingBlank, SegmentedControl } from 'antd-mobile';
+export interface IArticleHeaderProps extends RouteComponentProps {
 }
 
-export default class ArticleHeader extends React.Component<IArticleHeaderProps> {
+class ArticleHeader extends React.Component<IArticleHeaderProps> {
+  onChange = (e: any) => {
+    switch (e.nativeEvent.selectedSegmentIndex) {
+      case 1:
+        this.props.history.push('/article/learning')
+        break;
+      default:
+        this.props.history.push('/article/experience')
+        break;
+    }
+    console.log(e.nativeEvent.selectedSegmentIndex);
+  }
   public render() {
     return (
-      <div className={style.articleheader}>
-        <ul>
-            <li><NavLink to="/article/experience" activeClassName={style.active}>经验百科</NavLink></li>
-            <li><NavLink to="/article/learning" activeClassName={style.active}>学习攻略</NavLink></li>
-        </ul>
-      </div>
+      <WingBlank size="lg" className={style.scExample}>
+        <SegmentedControl values={['经验百科', '学习攻略']} onChange={this.onChange}/>
+      </WingBlank>
     );
   }
 }
+
+export default withRouter(ArticleHeader)

@@ -20,7 +20,7 @@ export default class Swiper extends React.Component<ISwiperProps, ISwiperState> 
   public render() {
     return (
       <div>
-        <WingBlank>
+        {/* <WingBlank size="sm"> */}
         <Carousel
           autoplay={false}
           infinite
@@ -46,7 +46,7 @@ export default class Swiper extends React.Component<ISwiperProps, ISwiperState> 
             </a>
           ))}
         </Carousel>
-      </WingBlank>
+      {/* </WingBlank> */}
       </div>
     );
   }

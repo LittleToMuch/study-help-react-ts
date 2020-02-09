@@ -3,7 +3,7 @@ export type DebounceFunc = () => void
 export type Throttle = () => void
 export type ThrottleFunc = () => void
 
-//时间戳转时间
+// 时间戳转时间
 export function timestampToTime(timestamp: string): string {
     const date: Date = new Date(timestamp)
     const Y = date.getFullYear() + '-'
@@ -15,8 +15,8 @@ export function timestampToTime(timestamp: string): string {
     return Y + M + D + h + m + s
 }
 
-//防抖函数
-export function debounce(func: DebounceFunc, timeout: number): Debounce {
+// 防抖函数
+export function debounce(func: any, timeout: number): Debounce {
     let timer: NodeJS.Timeout | null
     return () => {
         if (timer) clearTimeout(timer)
@@ -26,7 +26,7 @@ export function debounce(func: DebounceFunc, timeout: number): Debounce {
     }
 }
 
-//节流函数
+// 节流函数
 export function throttle(func: ThrottleFunc, timeout: number): Throttle {
     let timer: NodeJS.Timeout | null
     return () => {
@@ -39,14 +39,21 @@ export function throttle(func: ThrottleFunc, timeout: number): Throttle {
     }
 }
 
-//文件上传config
+// 文件上传config
 export const config = {
     headers: {
         'Content-type': 'multipart/form-data'
     }
 }
 
-//快排
+// 设置token
+
+export const setToken = (token: string) => {
+    window.localStorage.setItem("token", token)
+    return true
+}
+
+// 快排
 export function quickSort<T>(arr: T[]): T[] {
     const sortLoop = <T>(arr: T[]): T[] => {
         let len: number = arr.length

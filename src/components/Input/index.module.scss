@@ -1,0 +1,92 @@
+.txtb{
+    position: relative;
+    margin: .8rem 0;
+    input {
+        font-size: .4rem;
+        color: #3e3e3e;
+        border: none;
+        width: 100%;
+        outline: none;
+        background: none;
+        padding: 0 .05rem;
+        height: 1rem;
+        border-bottom: .04rem solid #adadad;
+    }
+    span::before{
+        content:attr(data-placeholder);
+        position: absolute;
+        top: 50%;
+        left: .05rem;
+        color: #aaaaaa;
+        transform: translateY(-50%);
+        z-index: 1;
+        transition: .5s;
+    }
+    span::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: .04rem;
+        background: linear-gradient(120deg,cyan,orange);
+        transition: .5s;
+    }
+    .focus + span::before{
+        top: -.1rem;
+    }
+    .focus + span::after{
+        width: 100%;
+    }
+}
+
+.txtc {
+    position: relative;
+    margin: .8rem 0;
+    input {
+        font-size: .4rem;
+        color: #3e3e3e;
+        border: none;
+        width: 30%;
+        outline: none;
+        background: none;
+        padding: 0 .05rem;
+        height: 1rem;
+        border-bottom: .04rem solid #adadad;
+    }
+    span::before{
+        content:attr(data-placeholder);
+        position: absolute;
+        top: 50%;
+        left: .05rem;
+        color: #aaaaaa;
+        transform: translateY(-50%);
+        z-index: 1;
+        transition: .5s;
+    }
+    span::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: .04rem;
+        background: linear-gradient(120deg,cyan,orange);
+        transition: .5s;
+    }
+    p {
+        display: inline;
+        vertical-align: bottom;
+    }
+    .focus + span::before{
+        top: -.1rem;
+    }
+    .focus + span::after{
+        width: 30%;
+    }
+}
+
+
+
+  
+

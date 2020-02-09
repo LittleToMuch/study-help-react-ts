@@ -1,11 +1,11 @@
 import * as React from 'react';
 import style from './index.module.scss'
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteComponentProps } from 'react-router-dom';
 import Axios from '../../utils/axios'
 import ReactDOM from 'react-dom';
 import { Toast } from 'antd-mobile';
 
-export interface IRegisterProps {}
+export interface IRegisterProps extends RouteComponentProps {}
 
 interface IRegisterState {
     isUserFocus: boolean
@@ -70,7 +70,7 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
     private captchaFocus = (): void => this.setState({ isCaptcha: true })
     private telFocus = (): void => this.setState({ isTelephone: true })
 
-    private failToast = (): void => Toast.fail('验证码输入错误', 1, () => this.getCaptcha())
+    private failToast = (msg: string): void => Toast.fail(msg, 1, () => this.getCaptcha())
 
     private refreshCaptcha = (): void => this.getCaptcha()
 
@@ -82,7 +82,11 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
         const data = { username: username.value, password: password.value, telephone: telephone.value, captcha: captcha.value, createDate: new Date() }
         Axios.post('/api/users/register', data).then(res => {
             const { code } = res.data
-            code === 400 && this.failToast()
+            code === 401 && this.failToast('该手机号已注册')
+            code === 402 && this.failToast('该用户名已注册')
+            code === 405 && this.failToast('验证码输入错误')
+            code === 404 && this.failToast('注册失败，请重试')
+            code === 200 && Toast.info('注册成功！', 1, () => this.props.history.push('/login'))
         })
     }
 

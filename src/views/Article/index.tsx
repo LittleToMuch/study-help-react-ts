@@ -13,10 +13,6 @@ function Article(props: IArticleProps) {
         <div className={style.article}>
             <Swiper/>
             <ArticleHeader/>
-            <form action="/">
-                <input type="text"/>
-                <button>提交</button>
-            </form>
             {props.children}
         </div>
     )
