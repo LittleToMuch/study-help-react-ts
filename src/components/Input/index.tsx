@@ -36,7 +36,7 @@ const Input: React.FunctionComponent<IInputProps> = props => {
           onChange={handleChange}
         />
         <span data-placeholder={props.placeholder}></span>
-        <p dangerouslySetInnerHTML={{ __html: props.captchaSvg as string }} onClick={props.refresh}/>
+        <span className={style.captcha} dangerouslySetInnerHTML={{ __html: props.captchaSvg as string }} onClick={props.refresh}/>
       </div>
   );
 };

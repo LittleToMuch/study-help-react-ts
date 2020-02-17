@@ -1,40 +1,42 @@
 import * as React from "react";
-import { WingBlank, Carousel } from "antd-mobile";
+import { Carousel } from "antd-mobile";
+
+interface SwiperList {
+  id: number
+  path: string
+}
 
 export interface ISwiperProps {
-  
+  datalist: SwiperList[]
 }
 
 export interface ISwiperState {
   slideIndex?: number;
-  datalist: any[];
   imgHeight: number | string;
 }
 
 export default class Swiper extends React.Component<ISwiperProps, ISwiperState> {
   public state: Readonly<ISwiperState> = {
-    datalist: ['1', '2', '3'],
     imgHeight: 176,
     slideIndex: 0
   }
   public render() {
     return (
       <div>
-        {/* <WingBlank size="sm"> */}
         <Carousel
-          autoplay={false}
+          autoplay={true}
           infinite
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => console.log('slide to', index)}
         >
-          {this.state.datalist.map(val => (
+          {this.props.datalist.map(val => (
             <a
-              key={val}
+              key={val.id}
               href="http://www.alipay.com"
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
             >
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                src={val.path}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {

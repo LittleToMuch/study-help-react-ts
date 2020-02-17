@@ -19,9 +19,12 @@ class ArticleHeader extends React.Component<IArticleHeaderProps> {
   }
   public render() {
     return (
-      <WingBlank size="lg" className={style.scExample}>
-        <SegmentedControl values={['经验百科', '学习攻略']} onChange={this.onChange}/>
-      </WingBlank>
+      <div className={style.articleHeader}>
+        <WingBlank size="lg" className={style.scExample}>
+          <SegmentedControl values={['经验百科', '学习攻略']} tintColor={'#ff0000'} onChange={this.onChange} className={style.segControl}/>
+        </WingBlank>
+      </div>
+      
     );
   }
 }

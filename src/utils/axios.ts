@@ -1,26 +1,28 @@
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import store from "../store";
+import { updateToken } from "../views/Login/actionCreater";
 
 const getLocalToken = (): string | null => {
   const token = window.localStorage.getItem("token");
   return token;
 }
 
-const setToken = (token: string): void => {
-    window.localStorage.setItem('token', token)
+const removeToken = (): void => {
+    window.localStorage.removeItem('token')
 }
 
 Axios.interceptors.request.use((config: AxiosRequestConfig) => {
     if(getLocalToken()) {
-        config.headers.Authorization = getLocalToken()
+        config.headers.common['Authorization'] = 'Bearer ' + getLocalToken()
     }
     return config
 }, (err: any) => Promise.reject(err))
 
 Axios.interceptors.response.use((response: AxiosResponse) => {
-    const { code } = response.data
-    if(code === 1234) {
-        window.location.href = '/login'
-        console.log("token过期")
+    const { code, isAuth } = response.data
+    
+    if(!isAuth && code === 1234) {
+        removeToken()
     }
     return response
 }, (err: any) => Promise.reject(err))

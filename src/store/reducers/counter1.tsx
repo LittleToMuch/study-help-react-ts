@@ -1,5 +1,5 @@
-import { StoreState1 } from "../types";
-import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from "../constants";
+import { StoreState1 } from "../state";
+import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from "../types";
 import { AnyAction } from "redux";
 
 let initalState: StoreState1 = {

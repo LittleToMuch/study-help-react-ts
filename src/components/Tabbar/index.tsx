@@ -13,9 +13,17 @@ const Tabbar: FunctionComponent = (props: ITabbarPorps) => {
             <ul>
                 {
                     datalist.map(item => (
-                        <li key={item.path}>
-                            <NavLink to={item.path} activeClassName={style.active}>{item.name}</NavLink>
-                        </li>
+                        item.isShow ? (
+                            <li key={item.path}>
+                                <NavLink to={item.path} activeClassName={style.active}>
+                                    <div>
+                                       <span className={item.icon}></span>
+                                        <p>{item.name}</p>
+                                    </div>
+                                    
+                                </NavLink>
+                            </li>
+                        ) : null
                     ))
                 }
             </ul>

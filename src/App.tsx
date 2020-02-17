@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Tabbar from './components/Tabbar';
+import Header from './components/Header';
 // import './App.css';
 
 export interface IAppProps {

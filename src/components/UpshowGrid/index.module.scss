@@ -1,0 +1,17 @@
+.Gridbox {
+  background-color: #f5f5f9;
+  div {
+    background-color: #f5f5f9;
+  }
+  svg {
+    width: 100%;
+  }
+  .line {
+      width: 80%;
+      height: .04rem;
+      border: .01rem solid #ccc;
+      margin-left: 10%;
+      margin-top: .1rem;
+      box-shadow: .01rem .01rem .02rem inset;
+  }
+}

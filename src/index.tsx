@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './assest/iconfont/iconfont.css'
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import store from './store';
 import router from './router'
 
-const rem = document.documentElement.clientWidth / 10
-document.documentElement.style.fontSize = rem + 'px'
+// const rem = document.documentElement.clientWidth / 10
+// document.documentElement.style.fontSize = rem + 'px'
 
 ReactDOM.render(
     <Provider store={store}>

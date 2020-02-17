@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from 'antd-mobile'
 import "./Hello.css";
-import { StoreState1 } from '../store/types'
+import { StoreState1 } from '../store/state'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import * as actions from '../store/actions'

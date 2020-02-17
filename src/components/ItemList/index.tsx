@@ -1,6 +1,7 @@
 import React, { memo } from "react";
-import { List } from "antd-mobile";
+import { List, WingBlank } from "antd-mobile";
 import { LearningStrategyJson } from '../../utils/apiInterface'
+import style from './index.module.scss'
 
 export interface IItemListProps extends LearningStrategyJson {
 
@@ -13,16 +14,17 @@ export default memo(function ItemList(props: IItemListProps) {
   const { id, title, content, createTime, category, pic } = props
   return (
     <div>
-      <List renderHeader={() => title} className="my-list">
-        <Item multipleLine onClick={() => {}} platform="android">
-          <span style={{float: "left"}}>pic</span>
-          {content}
-          <Brief>
-            {createTime}
-            <span style={{float: "right"}}>{category}</span>
-          </Brief>
-        </Item>
-      </List>
+      <WingBlank>
+          <Item onClick={() => {}} platform="android" className={style.item} >
+            <div className={style.pic}><img src={pic} alt=""/></div>
+            <span className={style.title}>{ title }</span>
+            <span className={style.category}>{ category }</span>
+            <Brief className={style.brief}>
+              <span className={style.content}>{ content }</span>
+              <span className={style.createTime}>{ createTime }</span>
+            </Brief>
+          </Item>
+      </WingBlank>
     </div>
   );
 });
