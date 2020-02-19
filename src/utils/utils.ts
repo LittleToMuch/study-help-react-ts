@@ -47,10 +47,15 @@ export const config = {
 }
 
 // 设置token
-
 export const setToken = (token: string) => {
     window.localStorage.setItem("token", token)
     return true
+}
+
+//删除token
+export const removeToken = () => {
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("userInfo")
 }
 
 // 快排

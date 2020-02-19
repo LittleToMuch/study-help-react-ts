@@ -4,4 +4,7 @@ module.exports = function (app) {
         target:'http://localhost:8080',
         changeOrigin:true
     }))
+    // app.use(proxy('/upload', {
+    //     target: 'http://localhost:8080'
+    // }))
 }

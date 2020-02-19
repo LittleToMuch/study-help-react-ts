@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./index.module.scss";
-import ArticleHeader from "../../components/ArticleHeader";
+import ArticleHeader from "./ArticleHeader";
 import Swiper from "../../components/Swiper";
 import Axios from "../../utils/axios";
 

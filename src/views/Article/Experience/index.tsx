@@ -1,7 +1,5 @@
 import React, { useEffect, useState, FunctionComponent } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Button } from 'antd-mobile';
-import Axios from '../../../utils/axios'
 import style from './index.module.scss'
 
 interface IExperienceProps extends RouteComponentProps {

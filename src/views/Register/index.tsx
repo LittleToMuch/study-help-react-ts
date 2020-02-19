@@ -68,6 +68,7 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
     }
 
     public render() {
+        const { username, password, captcha, telephone } = this.state
         return (
             <div>
                 <div className={style.loginForm}>
@@ -76,7 +77,7 @@ export default class Register extends React.Component<IRegisterProps, IRegisterS
                     <Input type="password" placeholder="Password" value={this.password}/>
                     <Input type="telephone" placeholder="telephone" value={this.telephone}/>
                     <Input type="captcha" placeholder="Captcha" captchaSvg={this.state.captchaSvg} refresh={this.refreshCaptcha} value={this.captcha}/>
-                    <input type="submit" className={style.logbtn} value='Register' disabled={!(this.state.isCaptcha || this.state.isPasswordFocus || this.state.isTelephone|| this.state.isUserFocus)} onClick={this.submit}/>
+                    <input type="submit" className={style.logbtn} value='Register' disabled={!(username || password || telephone|| captcha)} onClick={this.submit}/>
                     <div className={style.bottomText}>
                         <NavLink to="/login">⬅Come back</NavLink>
                     </div>

@@ -2,9 +2,9 @@ import React, {Component, useEffect, useState} from 'react';
 import Header from '../../components/Header';
 import Swiper from '../../components/Swiper';
 import Axios from 'axios';
-import UpshowGrid from '../../components/UpshowGrid';
+import UpshowGrid from './UpshowGrid';
 import style from './index.module.scss'
-import Cards from '../../components/Cards';
+import Cards from './Cards';
 
 interface IUpsShowProps {
 

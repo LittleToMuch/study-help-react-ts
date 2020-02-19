@@ -1,24 +1,25 @@
 import React, { ReactElement, useCallback } from "react";
 import { NavBar, Icon } from "antd-mobile";
 import style from './index.module.scss'
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-interface IHeaderProps {
+interface IHeaderProps extends RouteComponentProps {
     name: string
     path?: string
     hasRight: boolean
 }
 
 function Header(props: IHeaderProps): ReactElement {
-    const leftClick = useCallback(() => {
-        
-    }, [])
+  
+  const leftClick = () => props.history.push(props.path!)
+
   return (
     <div>
       <NavBar
         // mode="dark"
         style={{backgroundColor: 'rgb(255, 40, 50)'}}
         icon={props.path ? <Icon type="left" /> : ''}
-        onLeftClick={() => leftClick()}
+        onLeftClick={leftClick}
         rightContent={props.hasRight ? [
           <Icon key="1" type="cross" className={style.iconRotate}/>
         ]: ''}
@@ -29,4 +30,4 @@ function Header(props: IHeaderProps): ReactElement {
   );
 }
 
-export default Header;
+export default withRouter(Header);

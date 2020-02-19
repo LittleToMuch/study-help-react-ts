@@ -12,11 +12,6 @@ import { Reducers } from '../../store/reducers'
 
 interface ILoginProps extends RouteComponentProps {
     updateToken: (params: StoreToken) => void
-    id?: number
-    username?: string
-    role?: number
-    createDate?: string
-    telephone?: string
 }
 interface ILoginState {
     isUserFocus: boolean
@@ -97,14 +92,14 @@ class Login extends Component<ILoginProps, ILoginState> {
     }
 }
 
-export const mapStateToProps = (state: Reducers) => {
-    return {
-        username: state.tokenReducer.username
-    }
-}
+// export const mapStateToProps = (state: Reducers) => {
+//     return {
+//         username: state.tokenReducer.username
+//     }
+// }
 
 export const mapDispatchToProps = {
     updateToken
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(Login)

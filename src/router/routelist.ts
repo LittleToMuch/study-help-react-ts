@@ -9,6 +9,7 @@ const Register = lazy(() => import(/* webpackChunkName: "Register" */ '../views/
 const TuTsau = lazy(() => import(/* webpackChunkName: "TuTsau" */ '../views/TuTsau'))
 const UpsShow = lazy(() => import(/* webpackChunkName: "UpsShow" */ '../views/UpsShow'))
 const Article = lazy(() => import(/* webpackChunkName: "Article" */ '../views/Article'))
+const UpdateAvatar = lazy(() => import(/* webpackChunkName: "UpdateAvatar" */ '../views/UpdateAvatar'))
 
 export interface RouteList {
     path: string
@@ -89,5 +90,12 @@ export const routelist: Array<RouteList> = [
         isAuth: false,
         isShow: false,
         component: Register
+    },
+    {
+        path: '/updateAvatar',
+        name: '注册',
+        isAuth: true,
+        isShow: false,
+        component: UpdateAvatar
     }
 ]

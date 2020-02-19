@@ -7,7 +7,9 @@ export const updateToken = (params: StoreToken) => {
             username: params.username,
             role: params.role,
             createDate: params.createDate,
-            telephone: params.telephone
+            telephone: params.telephone,
+            avatar: params.avatar,
+            password: params.password
         }
     }
 }

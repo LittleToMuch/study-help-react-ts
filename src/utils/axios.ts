@@ -9,6 +9,7 @@ const getLocalToken = (): string | null => {
 
 const removeToken = (): void => {
     window.localStorage.removeItem('token')
+    window.localStorage.removeItem('userInfo')
 }
 
 Axios.interceptors.request.use((config: AxiosRequestConfig) => {

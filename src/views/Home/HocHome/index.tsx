@@ -22,7 +22,7 @@ export default function HocHome<T extends RouteComponentProps>(WrapComponent: Co
             console.log('hyh');
             
             return (
-                this.state.code === 200 ? <WrapComponent {...this.props}/> : null
+                <WrapComponent {...this.props} code={this.state.code}/>
             )
         }
     }

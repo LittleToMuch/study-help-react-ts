@@ -1,0 +1,16 @@
+.main {
+    width: 100%;
+    text-align: center;
+    padding-top: .5rem;
+    padding-bottom: .2rem;
+    background-color: rgba(0, 255, 242, 0.568);
+    border-radius: 15px;
+    margin-top: .03rem;
+    span {
+        display: flex;
+        justify-content: center;
+    }
+    .btn {
+        margin-left: -.05rem;
+    }
+}

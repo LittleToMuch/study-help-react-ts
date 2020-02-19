@@ -11,4 +11,10 @@ export interface StoreToken {
     role: number
     createDate: string
     telephone: string
+    avatar: string
+    password: string
+}
+
+export interface SetAvatar {
+    avatar: string
 }
