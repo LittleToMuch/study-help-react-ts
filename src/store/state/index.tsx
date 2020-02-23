@@ -3,7 +3,7 @@ export interface StoreState1 {
     enthusiamLevel: number
 }
 
-export type Header = boolean
+export type Tabbar = boolean
 
 export interface StoreToken {
     id: number

@@ -5,5 +5,5 @@ export const DECREMENT_ENTHUSIASM = 'DECREMENT_ENTHUSIASM'
 export type DECREMENT_ENTHUSIASM = typeof DECREMENT_ENTHUSIASM
 
 
-export const showHeader = 'show'
-export const hideHeader = 'hide'
+export const showTabbar = 'show'
+export const hideTabbar = 'hide'

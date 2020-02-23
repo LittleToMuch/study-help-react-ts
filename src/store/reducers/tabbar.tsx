@@ -1,18 +1,18 @@
 import * as types from "../types";
-import { Header } from "../state";
+import { Tabbar } from "../state";
 import { AnyAction } from "redux";
 
-let initalState: Header = true
+let initalState: Tabbar = true
 
 export default function(
-  state: Header = initalState,
+  state: Tabbar = initalState,
   action: AnyAction
-): Header {
+): Tabbar {
   const { type, payload } = action
   switch (type) {
-    case types.hideHeader:
+    case types.hideTabbar:
       return payload;
-    case types.showHeader:
+    case types.showTabbar:
       return payload
     default:
       return state;

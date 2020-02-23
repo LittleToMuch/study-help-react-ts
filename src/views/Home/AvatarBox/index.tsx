@@ -100,7 +100,6 @@ function AvatarBox(props: IAvatarProps): ReactElement {
                 />
             </Skeleton>
             </Card>
-            <Button size="small" type="warning">注销</Button>
         </div>
     )
 }

@@ -1,18 +1,18 @@
 import { combineReducers, ReducersMapObject, Reducer } from 'redux'
 import reducer1 from './counter1'
-import reducer2 from './header'
+import tabbarReducer from './tabbar'
 import tokenReducer from './token'
 import * as storeState from '../state'
 
 export interface Reducers{
   reducer1: storeState.StoreState1
-  reducer2: storeState.Header
+  tabbarReducer: storeState.Tabbar
   tokenReducer: storeState.StoreToken
 }
 
 let reducers: ReducersMapObject = {
   reducer1,
-  reducer2,
+  tabbarReducer,
   tokenReducer
 }
 

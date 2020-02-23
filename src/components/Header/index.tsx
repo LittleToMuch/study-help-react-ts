@@ -7,11 +7,18 @@ interface IHeaderProps extends RouteComponentProps {
     name: string
     path?: string
     hasRight: boolean
+    showModal?: () => void
 }
 
 function Header(props: IHeaderProps): ReactElement {
   
   const leftClick = () => props.history.push(props.path!)
+
+  const handleClick = useCallback(() => {
+    if(props.showModal) {
+      props.history.push('/TuTsauModal')
+    }
+  }, [props])
 
   return (
     <div>
@@ -21,7 +28,7 @@ function Header(props: IHeaderProps): ReactElement {
         icon={props.path ? <Icon type="left" /> : ''}
         onLeftClick={leftClick}
         rightContent={props.hasRight ? [
-          <Icon key="1" type="cross" className={style.iconRotate}/>
+          <Icon key="1" type="cross" className={style.iconRotate} onClick={handleClick}/>
         ]: ''}
       >
         {props.name}

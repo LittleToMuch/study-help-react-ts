@@ -6,6 +6,7 @@ import Axios from '../../utils/axios';
 import Header from '../../components/Header';
 import AvatarBox from './AvatarBox'
 import store from "../../store";
+import NavItem from './NavItem';
 
 interface IHomeProps extends RouteComponentProps {
     code: number
@@ -35,6 +36,12 @@ class Home extends React.Component<IHomeProps, IHomeState> {
             <div>
                 <Header name="我的" hasRight={false}/>
                 <AvatarBox { ...this.state }/>
+                <NavItem title="我的收藏" path="/png/收藏.png"/>
+                <NavItem title="我的提问" path="/png/提问.png"/>
+                <NavItem title="我的解答" path="/png/解答.png"/>
+                <NavItem title="我的发布" path="/png/发布.png"/>
+                <NavItem title="我的吐槽" path="/png/吐槽.png"/>
+                <NavItem title="已购买视频" path="/png/已购买.png"/>
                 <Button type="primary" size="small">测试</Button>
             </div>
         );

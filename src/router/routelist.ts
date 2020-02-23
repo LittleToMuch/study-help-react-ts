@@ -10,6 +10,7 @@ const TuTsau = lazy(() => import(/* webpackChunkName: "TuTsau" */ '../views/TuTs
 const UpsShow = lazy(() => import(/* webpackChunkName: "UpsShow" */ '../views/UpsShow'))
 const Article = lazy(() => import(/* webpackChunkName: "Article" */ '../views/Article'))
 const UpdateAvatar = lazy(() => import(/* webpackChunkName: "UpdateAvatar" */ '../views/UpdateAvatar'))
+const InputModal = lazy(() => import(/* webpackChunkName: "InputModal" */ '../views/TuTsau/InputModal'))
 
 export interface RouteList {
     path: string
@@ -93,9 +94,16 @@ export const routelist: Array<RouteList> = [
     },
     {
         path: '/updateAvatar',
-        name: '注册',
+        name: '上传头像',
         isAuth: true,
         isShow: false,
         component: UpdateAvatar
+    },
+    {
+        path: '/TuTsauModal',
+        name: '上传头像',
+        isAuth: true,
+        isShow: false,
+        component: InputModal
     }
 ]
