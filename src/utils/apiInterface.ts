@@ -1,18 +1,18 @@
 export interface LearningStrategyJson {
-    id: string | number
+    id?: string | number
     title: string
     content: string
-    createTime: string
+    createDate: string
     category: string
     pic: string
     userid?: string
 }
 
 export interface ExperienceJson {
-    id: string | number
+    id?: string | number
     title: string
     content: string
-    createTime: string
+    createDate: string
     category: string
     pic: string
     userid?: string

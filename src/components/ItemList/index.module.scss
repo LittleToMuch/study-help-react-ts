@@ -1,12 +1,17 @@
 .item {
     margin-bottom: .1rem;
+    width: 100%;
     position: relative;
+    border-bottom: 1px solid #ccc;
     .pic {
         float: left;
         width: .7rem;
         height: .7rem;
         margin-right: .1rem;
+        
         img {
+            // border-radius: 50%;
+            object-fit: contain;
             width: 100%;
             height: 100%;
         }
@@ -17,12 +22,18 @@
         right: .2rem;
     }
     .createTime {
+        font-size: .1rem;
+        line-height: .25rem;
         float: right;
         margin-top: .08rem;
     }
     .content {
+        width: 1.5rem;
         float: left;
         margin-top: .08rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
     .title {
         padding-top: .1rem;

@@ -1,5 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
+import store from '../../../store';
+import { TutsauCategory } from '../../../store/state'
+import { ContentList } from './apiTypes'
+import Axios from 'axios';
+import ItemList from '../../../components/ItemList';
 
 interface ITabProps {
     
@@ -8,36 +13,50 @@ interface ITabs {
     title: string
     sub?: string
 }
-
-const tabs = [
-    { title: 'First Tab' },
-    { title: 'Second Tab' },    
-    { title: 'Third Tab' },
-  ];
   
-  const tabs2 = [
-    { title: 'First Tab', sub: '1' },
-    { title: 'Second Tab', sub: '2' },
-    { title: 'Third Tab', sub: '3' },
-    { title: 'Fourth Tab', sub: '4' },
-  ];
+const tabList = [
+    {title: 'React'},
+    {title: 'Golang'},
+    {title: 'Java'},
+    {title: 'Swift'},
+    {title: 'Python'},
+    {title: 'Rust'},
+    {title: 'PHP'},
+    {title: 'Ruby'}
+];
 
 const Tab: React.FC<ITabProps> = () => {
-    const [tabs, setTabs] = useState<ITabs[]>([{ title: 'First Tab' },
-    { title: 'Second Tab' },    
-    { title: 'Third Tab' },])
+    const [tabs, setTabs] = useState<ITabs[]>(tabList)
+    const [contents, setContents] = useState<ContentList[]>([])
+
+    useEffect(() => {
+        Axios.get('/api/tutsau/list').then(res => {
+            const { data } = res.data
+            setContents(data)
+        })
+    }, [])
+
+    const handleChange = useCallback(async (tab, index) => {
+    }, [])
+
     return (
         <div>
             <div>
-                <Tabs tabs={tabs2}
-                initialPage={1}
+                <Tabs tabs={ tabs }
+                initialPage={ 0 } 
                 tabBarBackgroundColor="#f5f5f9"
-                onChange={(tab, index) => { console.log('onChange', index, tab); }}
+                onChange={ handleChange }
                 >
                 {
-                    tabs.map((item, index) => (
-                        <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', backgroundColor: '#fff' }}>
-                            Content of {item.title}
+                    tabs.map((item: ITabs, index: number) => (
+                        <div key={index} style={{backgroundColor: '#fff'}}>
+                            {
+                                contents.filter((content: ContentList) => {
+                                    return content.category === item.title.toLocaleLowerCase()
+                                }).map((item: ContentList) => (
+                                    <ItemList key={item.id} {...item}/>
+                                ))
+                            }
                         </div>
                     ))
                 }

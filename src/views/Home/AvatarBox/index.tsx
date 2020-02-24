@@ -93,10 +93,10 @@ function AvatarBox(props: IAvatarProps): ReactElement {
             <Skeleton loading={loading} avatar active>
                 <Meta
                 avatar={
-                    <Avatar size={50} src={imgUrl} />
+                    <Avatar size={60} src={imgUrl} />
                 }
                 title={props.username}
-                description="This is the description"
+                description="我的青春我做主~"
                 />
             </Skeleton>
             </Card>

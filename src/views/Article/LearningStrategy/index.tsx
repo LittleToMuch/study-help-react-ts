@@ -15,7 +15,7 @@ class LearningStrategy extends Component<ILearningStrategyProps, ILearningStrate
                 id: 1,
                 title: "测试标题",
                 content: "测试内容",
-                createTime: "2020/2/9",
+                createDate: "2020/2/9",
                 category: "水谷",
                 pic: "213a.jpg"
             },
@@ -23,7 +23,7 @@ class LearningStrategy extends Component<ILearningStrategyProps, ILearningStrate
                 id: 2,
                 title: "测试标题",
                 content: "测试内容",
-                createTime: "2020/2/9",
+                createDate: "2020/2/9",
                 category: "水谷",
                 pic: "213a.jpg"
             }

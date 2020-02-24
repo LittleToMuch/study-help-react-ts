@@ -18,3 +18,8 @@ export interface StoreToken {
 export interface SetAvatar {
     avatar: string
 }
+
+export interface TutsauCategory {
+    label: string
+    value: string
+}

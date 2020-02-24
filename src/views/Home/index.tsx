@@ -22,7 +22,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
         avatar: ''
     }
     public componentDidMount() {
-        const { username, avatar } = store.getState().tokenReducer
+        const { username, avatar, telephone } = store.getState().tokenReducer
         this.setState({ username, avatar })
         Axios.get('/api/users/token').then(res => {
             console.log(res.data); 

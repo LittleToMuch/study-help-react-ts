@@ -14,17 +14,6 @@ interface IInputModalProps extends RouteComponentProps {
     showTabbar: () => ReturnType<typeof showTabbar>
 }
 
-const district = [
-    {label: 'React', value: 'javascript'},
-    {label: 'Golang', value: 'golang'},
-    {label: 'Java', value: 'java'},
-    {label: 'Swift', value: 'swift'},
-    {label: 'Python', value: 'python'},
-    {label: 'Rust', value: 'rust'},
-    {label: 'PHP', value: 'php'},
-    {label: 'Ruby', value: 'ruby'}
-]
-
 const InputModal: React.FC<IInputModalProps> = (props) => {
 
     const [loading, setLoading] = useState<boolean>(false)
@@ -66,10 +55,10 @@ const InputModal: React.FC<IInputModalProps> = (props) => {
             <Header name="吐槽发布中..." hasRight={false} path="/tutsau"/>
             <WingBlank>
                 <List renderHeader={() => '标题:'}>
-                    <TextareaItem count={10} value={title} onChange={titleChange}/>
+                    <TextareaItem count={15} value={title} onChange={titleChange}/>
                 </List>
                 <List renderHeader={() => '类别:'}>
-                    <Picker data={district} cols={1} className="forss" value={category} onOk={handleOk}>
+                    <Picker data={store.getState().tutsauCategory} cols={1} className="forss" value={category} onOk={handleOk}>
                         <List.Item arrow="horizontal">类别:</List.Item>
                     </Picker>
                 </List>
@@ -86,6 +75,12 @@ const InputModal: React.FC<IInputModalProps> = (props) => {
         </div>
     )
 }
+
+// const mapStateToProps = (state: Reducers) => {
+//     return {
+//         district: state.tutsauCategory
+//     }
+// }
 
 const mapDispatchToProps = {
     hideTabbar,

@@ -14,11 +14,15 @@ const TuTsau = (props: ITuTsauProps) => {
     const showModel = useCallback(() => {
         setShowModal(true)
     }, [])
+
+    const handleChange = useCallback((value: string) => {
+        
+    }, [])
     
     return (
         <div>
             <Header name="吐槽中心" hasRight={true} showModal={showModel}/>
-            <WingBlank size="sm"><SearchBar placeholder="Search" maxLength={8} /></WingBlank>
+            <WingBlank size="sm"><SearchBar placeholder="Search" maxLength={8} onChange={handleChange}/></WingBlank>
             <Tab />
         </div>
     )
