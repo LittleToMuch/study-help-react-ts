@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
-import store from '../../../store';
-import { TutsauCategory } from '../../../store/state'
-import { ContentList } from './apiTypes'
+import { Tabs, WhiteSpace } from 'antd-mobile';
+import { TutsauSearch } from '../../../store/state'
 import Axios from 'axios';
 import ItemList from '../../../components/ItemList';
+import { connect } from 'react-redux'
+import { Reducers } from '../../../store/reducers';
+import { ContentListJson } from '../../../utils/apiInterface';
 
 interface ITabProps {
-    
+    value: TutsauSearch
 }
 interface ITabs {
     title: string
@@ -25,9 +26,9 @@ const tabList = [
     {title: 'Ruby'}
 ];
 
-const Tab: React.FC<ITabProps> = () => {
+const Tab: React.FC<ITabProps> = (props) => {
     const [tabs, setTabs] = useState<ITabs[]>(tabList)
-    const [contents, setContents] = useState<ContentList[]>([])
+    const [contents, setContents] = useState<ContentListJson[]>([])
 
     useEffect(() => {
         Axios.get('/api/tutsau/list').then(res => {
@@ -38,7 +39,7 @@ const Tab: React.FC<ITabProps> = () => {
 
     const handleChange = useCallback(async (tab, index) => {
     }, [])
-
+    
     return (
         <div>
             <div>
@@ -51,10 +52,11 @@ const Tab: React.FC<ITabProps> = () => {
                     tabs.map((item: ITabs, index: number) => (
                         <div key={index} style={{backgroundColor: '#fff'}}>
                             {
-                                contents.filter((content: ContentList) => {
+                                contents.filter((content: ContentListJson) => {
                                     return content.category === item.title.toLocaleLowerCase()
-                                }).map((item: ContentList) => (
-                                    <ItemList key={item.id} {...item}/>
+                                }).map((item: ContentListJson) => (
+                                    item.title.includes(props.value) ? 
+                                    <ItemList key={item.id} {...item}/> : null
                                 ))
                             }
                         </div>
@@ -67,4 +69,10 @@ const Tab: React.FC<ITabProps> = () => {
     )
 }
 
-export default Tab
+const mapStateToProps = (state: Reducers) => {
+    return {
+        value: state.tutsauSearch
+    }
+}
+
+export default connect(mapStateToProps, null)(Tab)

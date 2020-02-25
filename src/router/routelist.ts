@@ -11,6 +11,12 @@ const UpsShow = lazy(() => import(/* webpackChunkName: "UpsShow" */ '../views/Up
 const Article = lazy(() => import(/* webpackChunkName: "Article" */ '../views/Article'))
 const UpdateAvatar = lazy(() => import(/* webpackChunkName: "UpdateAvatar" */ '../views/UpdateAvatar'))
 const InputModal = lazy(() => import(/* webpackChunkName: "InputModal" */ '../views/TuTsau/InputModal'))
+const MyTutsau = lazy(() => import( /* webpackChunkName: "MyTutsau" */ '../views/Home/Components/MyTutsau'))
+const MyQuestion = lazy(() => import( /* webpackChunkName: "MyQuestion" */ '../views/Home/Components/MyQuestion'))
+const MyIssue = lazy(() => import( /* webpackChunkName: "MyIssue" */ '../views/Home/Components/MyIssue'))
+const MyCollection = lazy(() => import( /* webpackChunkName: "MyCollection" */ '../views/Home/Components/MyCollection'))
+const MyAnswer = lazy(() => import( /* webpackChunkName: "MyAnswer" */ '../views/Home/Components/MyAnswer'))
+const HasBuy = lazy(() => import( /* webpackChunkName: "HasBuy" */ '../views/Home/Components/HasBuy'))
 
 export interface RouteList {
     path: string
@@ -105,5 +111,47 @@ export const routelist: Array<RouteList> = [
         isAuth: true,
         isShow: false,
         component: InputModal
+    },
+    {
+        path: '/myTutsau',
+        name: '我的吐槽',
+        isAuth: true,
+        isShow: false,
+        component: MyTutsau
+    },
+    {
+        path: '/myQuestion',
+        name: '我的提问',
+        isAuth: true,
+        isShow: false,
+        component: MyQuestion
+    },
+    {
+        path: '/myIssue',
+        name: '我的发布',
+        isAuth: true,
+        isShow: false,
+        component: MyIssue
+    },
+    {
+        path: '/myCollection',
+        name: '我的收藏',
+        isAuth: true,
+        isShow: false,
+        component: MyCollection
+    },
+    {
+        path: '/myAnswer',
+        name: '我的回答',
+        isAuth: true,
+        isShow: false,
+        component: MyAnswer
+    },
+    {
+        path: '/hasBuy',
+        name: '已购买',
+        isAuth: true,
+        isShow: false,
+        component: HasBuy
     }
 ]

@@ -19,7 +19,6 @@ const Brief = Item.Brief
 export default function ItemList(props: IItemListProps) {
   const { id, title, content, createDate, category, pic } = props
   const time = timestampToTime(createDate).split(" ")[0]
-  console.log(time)
   return (
     <div>
       <WingBlank size="sm">

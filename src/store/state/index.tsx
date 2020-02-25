@@ -23,3 +23,5 @@ export interface TutsauCategory {
     label: string
     value: string
 }
+
+export type TutsauSearch = string

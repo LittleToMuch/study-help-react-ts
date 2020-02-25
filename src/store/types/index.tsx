@@ -7,3 +7,5 @@ export type DECREMENT_ENTHUSIASM = typeof DECREMENT_ENTHUSIASM
 
 export const showTabbar = 'show'
 export const hideTabbar = 'hide'
+
+export const changeValue = 'changeValue'
