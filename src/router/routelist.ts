@@ -17,6 +17,11 @@ const MyIssue = lazy(() => import( /* webpackChunkName: "MyIssue" */ '../views/H
 const MyCollection = lazy(() => import( /* webpackChunkName: "MyCollection" */ '../views/Home/Components/MyCollection'))
 const MyAnswer = lazy(() => import( /* webpackChunkName: "MyAnswer" */ '../views/Home/Components/MyAnswer'))
 const HasBuy = lazy(() => import( /* webpackChunkName: "HasBuy" */ '../views/Home/Components/HasBuy'))
+const UpsShowList = lazy(() => import(/* webpackChunkName: "UpsshowList" */'../views/UpsShow/UpshowList'))
+const TutsauDetails = lazy(() => import(/* webpackChunkNmae: "TutsauDetails" */'../views/TuTsau/TutsauDetails'))
+const ExperienceDetails = lazy(() => import(/* webpackChunkNmae: "ExperienceDetails" */'../views/Article/Experience/Details'))
+const LearningDetails = lazy(() => import(/* webpackChunkNmae: "LearningDetails" */'../views/Article/LearningStrategy/Details'))
+const ArticleModal = lazy(() => import(/* webpackChunkNmae: "LearningStrategyModal" */ '../views/Article/ArticleModal'))
 
 export interface RouteList {
     path: string
@@ -153,5 +158,40 @@ export const routelist: Array<RouteList> = [
         isAuth: true,
         isShow: false,
         component: HasBuy
+    },
+    {
+        path: '/upshow/list/:category',
+        name: '大咖列表',
+        isAuth: false,
+        isShow: false,
+        component: UpsShowList,
+    },
+    {
+        path: '/tutsau/detail/:id',
+        name: '吐槽详情',
+        isAuth: false,
+        isShow: false,
+        component: TutsauDetails
+    },
+    {
+        path: '/experience/detail/:id',
+        name: '经验详情',
+        isAuth: false,
+        isShow: false,
+        component: ExperienceDetails
+    },
+    {
+        path: '/learning/detail/:id',
+        name: '经验详情',
+        isAuth: false,
+        isShow: false,
+        component: LearningDetails
+    },
+    {
+        path: '/articleModal',
+        name: '发布攻略',
+        isAuth: true,
+        isShow: false,
+        component: ArticleModal
     }
 ]

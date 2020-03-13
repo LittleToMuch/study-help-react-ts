@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import style from "./index.module.scss";
 import ArticleHeader from "./ArticleHeader";
 import Swiper from "../../components/Swiper";
-import Axios from "../../utils/axios";
+import Axios from "axios";
 
 export interface IArticleProps {
   children?: React.ReactNode;

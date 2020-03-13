@@ -1,8 +1,9 @@
 import React, { ReactElement, SFC, useState } from 'react'
 import { Grid } from 'antd-mobile';
-import style from './index.module.scss'
+import style from './index.module.scss';
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-interface IUpshowCategroyProps {
+interface IUpshowCategroyProps extends RouteComponentProps {
     
 }
 
@@ -46,8 +47,7 @@ function UpshowCategroy(props: IUpshowCategroyProps) {
         text: _val.text,
     }));
     const _Grid = (e: any) => {
-        console.log(e);
-        
+        props.history.push(`/upshow/list/${e.text}`)
     }
     return (
         <div className={style.Gridbox}>
@@ -57,4 +57,4 @@ function UpshowCategroy(props: IUpshowCategroyProps) {
     )
 }
 
-export default UpshowCategroy
+export default withRouter(UpshowCategroy)

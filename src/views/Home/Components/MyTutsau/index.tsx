@@ -20,17 +20,26 @@ const MyTutsau: React.FC<IMyTutsauProps> = (props) => {
 
     const timerId = useRef<NodeJS.Timeout | null>(null)
 
-    useEffect(() => {
-        props.hideTabbar()
+    const getList = useCallback(async () => {
         const { id } = store.getState().tokenReducer
         Axios.get('/api/tutsau/listByUser', {params: { userid: id }}).then(res => {
             const { code, data } = res.data
             code === 200 && setTutsauList(data)
         })
+    }, [])
+
+    useEffect(() => {
+        props.hideTabbar()
+        getList()
         return () => {
             props.showTabbar()
         }
-    }, [props])
+    }, [getList, props])
+
+    const update = useCallback(async (id: number) => {
+        setTutsauList((tutsauList) => tutsauList.filter(item => item.id !== id))
+    }, [])
+
     const handleChange = useCallback((value: string) => {
         timerId.current && clearTimeout(timerId.current)
         timerId.current = setTimeout(() => {
@@ -39,12 +48,12 @@ const MyTutsau: React.FC<IMyTutsauProps> = (props) => {
     }, [])
     return (
         <div>
-            <Header name="我的吐槽" path="/home" hasRight={false}/>
+            <Header name="我的吐槽" path="/home"/>
             <WingBlank size="sm"><SearchBar placeholder="Search" maxLength={14} onChange={handleChange}/></WingBlank>
             {
                 tutsauList.length ? tutsauList.map((item: ContentListJson) => (
                     item.title.includes(value) ? 
-                    <ItemList key={item.id} {...item}/> : null
+                    <ItemList key={item.id} {...item} hasDel={true} update={update} delApi="/api/tutsau/del" detailUrl="/tutsau/detail"/> : null
                 )) : null
             }
         </div>

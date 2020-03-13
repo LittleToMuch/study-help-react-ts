@@ -15,7 +15,17 @@ class ArticleHeader extends React.Component<IArticleHeaderProps> {
         this.props.history.push('/article/experience')
         break;
     }
-    console.log(e.nativeEvent.selectedSegmentIndex);
+  }
+  public componentDidMount () {
+    if (this.props.history.location.pathname === '/article/learning') {
+      const event = {
+      nativeEvent: {
+          selectedSegmentIndex: 1
+        }
+      }
+      this.onChange(event)
+    }
+    
   }
   public render() {
     return (

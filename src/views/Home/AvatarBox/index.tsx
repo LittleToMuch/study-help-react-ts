@@ -1,14 +1,14 @@
 import React, {ReactElement, useCallback, useMemo, useState} from 'react'
 import style from './index.module.scss'
-import { Avatar, Card, Icon, Skeleton, Dropdown, Menu } from 'antd';
-import {Button, Modal, Toast} from 'antd-mobile';
+import { Avatar, Card, Skeleton, Menu } from 'antd';
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import {Modal, Toast} from 'antd-mobile';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import store from "../../../store";
 import Axios from "axios";
 import { removeToken } from "../../../utils/utils";
 import {connect} from "react-redux";
 import { clearToken } from './actionCreater'
-import {StoreToken} from "../../../store/state";
 
 interface IAvatarProps extends RouteComponentProps {
     avatar: string
@@ -35,7 +35,7 @@ function AvatarBox(props: IAvatarProps): ReactElement {
 
     const updateAvatar = useCallback(() => {
       props.history.push(`/updateAvatar`)
-    }, [])
+    }, [props.history])
 
     const editPassword = useCallback(() => {
       const { id, password } = store.getState().tokenReducer
@@ -70,18 +70,18 @@ function AvatarBox(props: IAvatarProps): ReactElement {
           '',
           ['请输入旧密码'],
       )
-    }, [])
+    }, [props.history])
 
     const logout = useCallback(() => {
       removeToken()
       props.clearToken()
       Toast.success('注销成功', 1, () => props.history.push(`/login`))
-    }, [])
+    }, [props])
 
     const actions = [
-        <Icon type="edit" key="edit" onClick={editPassword}/>,
-        <Icon type="setting" key="setting" onClick={updateAvatar}/>,
-        <Icon type="ellipsis" key="ellipsis" onClick={logout}/>,
+      <EditOutlined key="edit" onClick={editPassword}/>,
+      <SettingOutlined key="setting" onClick={updateAvatar}/>,
+      <EllipsisOutlined key="ellipsis" onClick={logout}/>
     ]
 
     return (

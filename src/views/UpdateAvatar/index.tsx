@@ -37,7 +37,7 @@ function UpdateAvatar(props: IUpdateAvatarProps) {
 
     return (
         <div>
-            <Header name="修改头像" hasRight={ false } path="/home"/>
+            <Header name="修改头像" path="/home"/>
             <main className={style.main}>
                 <UploadAvatar uploadPath={uploadPath}/>
                 <Button type="danger" disabled={!path} className={style.btn} onClick={uploadClick}>上传</Button>

@@ -1,41 +1,40 @@
 import React, {Component} from 'react';
 import { LearningStrategyJson } from '../../../utils/apiInterface'
 import ItemList from '../../../components/ItemList';
+import { ArticleJson } from '../../../typings/api';
+import Axios from 'axios';
 
 export interface ILearningStrategyProps {}
 export interface ILearningStrategyState {
-    datalist: LearningStrategyJson[]
+    renderList: ArticleJson[]
 }
 
 class LearningStrategy extends Component<ILearningStrategyProps, ILearningStrategyState> {
 
     public state = {
-        datalist: [
-            {
-                id: 1,
-                title: "测试标题",
-                content: "测试内容",
-                createDate: "2020/2/9",
-                category: "水谷",
-                pic: "213a.jpg"
-            },
-            {
-                id: 2,
-                title: "测试标题",
-                content: "测试内容",
-                createDate: "2020/2/9",
-                category: "水谷",
-                pic: "213a.jpg"
-            }
-        ]
+        renderList: []
+    }
+
+    public componentDidMount () {
+        this.getRenderList()
+    }
+
+    getRenderList = async () => {
+        const res = await Axios.get('/api/learning/list')
+        const { data } = res.data
+        this.setState({
+            renderList: data
+        })
     }
 
     render() {
-        const { datalist } = this.state
+        const {renderList} = this.state
         return (
             <div>
                 {
-                    datalist.map(item => <ItemList key={item.id} { ...item }/>)
+                    renderList.length ? renderList.map((item: ArticleJson, index: number) => (
+                        <ItemList key={item.id} {...item}  detailUrl="/learning/detail"/>
+                    )) : null
                 }
             </div>
         );

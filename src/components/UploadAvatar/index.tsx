@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
-import { Upload, Icon, message } from 'antd';
+import { Upload, message } from 'antd';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { RcFile } from 'antd/lib/upload';
 import { UploadFile, UploadChangeParam } from 'antd/lib/upload/interface';
 
@@ -18,7 +19,7 @@ function UploadAvatar(props: IUploadAvatarProps): React.ReactElement {
 
     const uploadButton = (
         <div>
-          <Icon type={loading ? 'loading' : 'plus'} />
+          { loading ? <LoadingOutlined /> : <PlusOutlined /> }
           <div className="ant-upload-text">Upload</div>
         </div>
       );

@@ -1,0 +1,16 @@
+.root {
+    ul {
+        height: .3rem;
+        li {
+            height: 100%;
+            span {
+                line-height: .3rem;
+            }
+        }
+    }
+    .content {
+        text-align: left;
+        text-indent: 0px;
+    }
+    border-top: 1px solid #eee;
+}

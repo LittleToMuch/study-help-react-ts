@@ -28,7 +28,7 @@ const TuTsau = (props: ITuTsauProps) => {
     
     return (
         <div>
-            <Header name="吐槽中心" hasRight={true} showModal={showModel}/>
+            <Header name="吐槽中心" hasRight="/TuTsauModal"/>
             <WingBlank size="sm"><SearchBar placeholder="Search" maxLength={14} onChange={handleChange}/></WingBlank>
             <Tab value=""/>
         </div>

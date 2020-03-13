@@ -37,7 +37,6 @@ class Login extends Component<ILoginProps, ILoginState> {
     public componentDidMount() {
         this.getCaptcha()
     }
-    
 
     private getCaptcha = (): void => {
         Axios.get('/api/users/captcha').then(res => {

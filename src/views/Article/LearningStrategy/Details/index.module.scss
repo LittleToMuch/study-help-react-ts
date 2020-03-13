@@ -1,0 +1,27 @@
+.cardBox {
+    background: #ececec;
+    p {
+        font-size: .16rem;
+        text-indent: 2em;
+    }
+    p.img {
+        text-indent: 0;
+    }
+    p.date {
+        text-align: right;
+        font-size: .12rem;
+    }
+    .tag {
+        position: absolute;
+        right: .13rem;
+    }
+    .comments {
+        background-color: #fff;
+    }
+    .icon {
+        width: .5rem;
+        span:nth-of-type(2) {
+            float: right;
+        }
+    }
+}

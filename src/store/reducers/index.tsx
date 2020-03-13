@@ -4,6 +4,7 @@ import tabbarReducer from './tabbar'
 import tokenReducer from './token'
 import tutsauCategory from './tutsauCategory'
 import tutsauSearch from './tutsauSearch'
+import articleCategory from './articleCategory'
 import * as storeState from '../state'
 
 export interface Reducers{
@@ -12,6 +13,7 @@ export interface Reducers{
   tokenReducer: storeState.StoreToken
   tutsauCategory: storeState.TutsauCategory
   tutsauSearch: storeState.TutsauSearch
+  articleCategory: storeState.ArticleCategory
 }
 
 let reducers: ReducersMapObject = {
@@ -19,7 +21,8 @@ let reducers: ReducersMapObject = {
   tabbarReducer,
   tokenReducer,
   tutsauCategory,
-  tutsauSearch
+  tutsauSearch,
+  articleCategory
 }
 
 export const combineReducer: Reducer<Reducers> = combineReducers<Reducers>(reducers)

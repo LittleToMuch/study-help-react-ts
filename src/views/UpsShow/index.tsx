@@ -22,7 +22,7 @@ const UpsShow = (props: IUpsShowProps) => {
     }, [])
     return (
         <div className={style.UpsShow}>
-            <Header name="大咖秀" hasRight={false} />
+            <Header name="大咖秀" />
             <Swiper datalist={datalist}/>
             <UpshowGrid />
             <div className={style.glory}>

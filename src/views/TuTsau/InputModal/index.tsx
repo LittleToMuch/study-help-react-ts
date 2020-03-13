@@ -52,7 +52,7 @@ const InputModal: React.FC<IInputModalProps> = (props) => {
 
     return (
         <div>
-            <Header name="吐槽发布中..." hasRight={false} path="/tutsau"/>
+            <Header name="吐槽发布中..." path="/tutsau"/>
             <WingBlank>
                 <List renderHeader={() => '标题:'}>
                     <TextareaItem count={15} value={title} onChange={titleChange}/>

@@ -12,15 +12,11 @@ export default function HocHome<T extends RouteComponentProps>(WrapComponent: Co
             code: 0
         }
         public componentDidMount() {
-            Axios.get('/api/users/token').then(res => {
-                console.log(res.data);
-                
+            Axios.get('/api/users/tokenValidate').then(res => {
                 this.setState({ code: res.data.code })
             })
         }
         public render() {
-            console.log('hyh');
-            
             return (
                 <WrapComponent {...this.props} code={this.state.code}/>
             )

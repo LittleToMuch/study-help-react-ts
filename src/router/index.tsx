@@ -19,8 +19,8 @@ const routerlist = (item: RouteList) => {
         )}/>
     }else {
        return item.isAuth ? <Route key={item.path} path={item.path} render={(props: RouteComponentProps) => (
-           isLogin() ? <item.component { ...props }/> : <Redirect to="/login"/>
-       )}/> : <Route key={item.path} path={item.path} component={item.component}/> 
+           isLogin() ? <item.component { ...props } exact/> : <Redirect to="/login"/>
+       )}/> : <Route key={item.path} path={item.path} component={item.component} exact/> 
     }
 }
 const router = (

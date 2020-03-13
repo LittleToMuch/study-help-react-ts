@@ -24,4 +24,14 @@ export interface TutsauCategory {
     value: string
 }
 
+export interface ArticleCategory {
+    label: string
+    value: string
+}
+
+export enum ArticleCategoryEnum {
+    experience,
+    learning
+}
+
 export type TutsauSearch = string

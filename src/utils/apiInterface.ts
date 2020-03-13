@@ -18,14 +18,6 @@ export interface ExperienceJson {
     userid?: string
 }
 
-export interface TuTsauJson {
-    id: string | number
-    title: string
-    content: string
-    createTime: string
-    userid?: string
-}
-
 export interface VideoJson {
     id: string | number
     category: string

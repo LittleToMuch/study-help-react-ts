@@ -1,8 +1,9 @@
 .item {
-    margin-bottom: .1rem;
+    margin-bottom: .05rem;
     width: 100%;
     position: relative;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
+    border-radius: 10px;
     .pic {
         float: left;
         width: .7rem;
@@ -37,5 +38,18 @@
     }
     .title {
         padding-top: .1rem;
+        font-weight: 500;
+    }
+    .del {
+        width: .3rem;
+        height: .16rem;
+        padding-left: .02rem;
+        padding-right: .02rem;
+        line-height: .16rem;
+        font-size: .1rem;
+        position: absolute !important;
+        top: .33rem;
+        right: .14rem;
+        margin-right: 0;
     }
 }

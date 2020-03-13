@@ -5,26 +5,26 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 
 interface IHeaderProps extends RouteComponentProps {
     name: string
-    path?: string
-    hasRight: boolean
-    showModal?: () => void
+    path?: string | number
+    hasRight?: string
 }
 
 function Header(props: IHeaderProps): ReactElement {
   
-  const leftClick = () => props.history.push(props.path!)
+  const leftClick = () => {
+    typeof props.path === 'string' && props.history.push(props.path)
+    typeof props.path === 'number' && props.history.go(props.path)
+  }
 
   const handleClick = useCallback(() => {
-    if(props.showModal) {
-      props.history.push('/TuTsauModal')
-    }
+    props.hasRight && props.history.push(props.hasRight)
   }, [props])
 
   return (
-    <div>
+    <div className={style.header}>
       <NavBar
         // mode="dark"
-        style={{backgroundColor: 'rgb(255, 40, 50)'}}
+        style={{backgroundColor: 'rgb(255, 40, 50)', position: 'fixed', width: '100%', height: '45px', zIndex: 1}}
         icon={props.path ? <Icon type="left" /> : ''}
         onLeftClick={leftClick}
         rightContent={props.hasRight ? [
