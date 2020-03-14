@@ -7,6 +7,7 @@ import {ContentListJson} from "../../../../../utils/apiInterface";
 import ItemList from "../../../../../components/ItemList";
 import {Reducers} from "../../../../../store/reducers";
 import store from "../../../../../store";
+import { flatten } from '../../../../../utils/utils';
 
 interface ITabProps {
   value: TutsauSearch
@@ -25,20 +26,29 @@ const tabList = [
 
 const Tab: React.FC<ITabProps> = (props) => {
   const [tabs, setTabs] = useState<ITabs[]>(tabList)
-  const [contents, setContents] = useState<ContentListJson[]>([])
+  const [experience, setExperience] = useState<ContentListJson[]>([])
+  const [learning, setLearning] = useState<ContentListJson[]>([])
+  const [tutsau, setTutsau] = useState<ContentListJson[]>([])
   useEffect(() => {
+    (async () => {
+      const renderExp = await getRenderList('/api/experience/myCollection')
+      setExperience(renderExp)
+      const renderLearning = await getRenderList('/api/learning/myCollection')
+      setLearning(renderLearning)
+      const renderTutsau = await getRenderList('/api/tutsau/myCollection')
+      setTutsau(renderTutsau)
+    })()
+  }, [])
+
+  const getRenderList = async (url: string): Promise<any> => {
     const { id } = store.getState().tokenReducer
-    Axios.get('/api/experience/myCollection', {params: {userid: id}}).then(res => {
-      const {data, code} = res.data
-      code === 200 && setContents(data)
-    })
-  }, [])
-
+    const res = await Axios.get(url, {params: {userid: id}})
+    const { data, code } = res.data
+    if (code === 200) return data 
+  }
   const handleChange = useCallback(async (tab, index) => {
-    console.log(tab, index)
   }, [])
 
-  console.log(contents)
   return (
       <div>
         <Tabs tabs={tabs}
@@ -47,18 +57,30 @@ const Tab: React.FC<ITabProps> = (props) => {
               onChange={handleChange}
               tabBarUnderlineStyle={{backgroundColor: '#108ee9', borderLeft: 0, borderRight: 0, borderTop: 1}}
         >
-          {
-            tabs.map((item: ITabs, index: number) => (
-                <div key={index} style={{backgroundColor: '#fff'}}>
-                  {
-                    contents.map((item: ContentListJson) => (
-                        item.title.includes(props.value) ?
-                            <ItemList key={item.id} {...item} detailUrl="/tutsau/detail"/> : null
-                    ))
-                  }
-                </div>
-            ))
-          }
+          <div>
+            {
+              experience.map((item: ContentListJson, index: number) => (
+                  item.title.includes(props.value) ?
+                      <ItemList key={index} {...item} detailUrl="/experience/detail"/> : null
+              ))
+            }
+          </div>
+          <div>
+            {
+              learning.map((item: ContentListJson, index: number) => (
+                  item.title.includes(props.value) ?
+                      <ItemList key={index} {...item} detailUrl="/learning/detail"/> : null
+              ))
+            }
+          </div>
+          <div>
+            {
+              tutsau.map((item: ContentListJson, index: number) => (
+                  item.title.includes(props.value) ?
+                      <ItemList key={index} {...item} detailUrl="/tutsau/detail"/> : null
+              ))
+            }
+          </div>
         </Tabs>
       </div>
   )

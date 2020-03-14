@@ -11,3 +11,11 @@ export const showTabbar = () => {
         payload: true
     }
 }
+
+export const backStateEnter = () => {
+    return {
+        type: 'changeBackState',
+        payload: true
+    }
+}
+

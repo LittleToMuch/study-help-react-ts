@@ -3,9 +3,12 @@ import style from "./index.module.scss";
 import ArticleHeader from "./ArticleHeader";
 import Swiper from "../../components/Swiper";
 import Axios from "axios";
+import { connect } from "react-redux";
+import { backStateLeave } from './actionCreater'
 
 export interface IArticleProps {
   children?: React.ReactNode;
+  backStateLeave: () => ReturnType<typeof backStateLeave>
 }
 
 function Article(props: IArticleProps) {
@@ -15,6 +18,9 @@ function Article(props: IArticleProps) {
       const { data } = res.data;
       setDatalist(datalist => (datalist = data));
     });
+    return () => {
+      props.backStateLeave()
+    }
   }, []);
   return (
     <div className={style.article}>
@@ -25,4 +31,8 @@ function Article(props: IArticleProps) {
   );
 }
 
-export default Article;
+const mapDispatchToProps = {
+  backStateLeave
+}
+
+export default connect(null, mapDispatchToProps)(Article);

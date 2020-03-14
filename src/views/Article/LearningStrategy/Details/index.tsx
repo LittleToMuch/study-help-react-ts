@@ -3,7 +3,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom'
 import Axios from '../../../../utils/axios'
 import { Card, Tag } from 'antd'
 import style from './index.module.scss'
-import { hideTabbar, showTabbar } from './actionCreater'
+import { hideTabbar, showTabbar, backStateEnter } from './actionCreater'
 import { connect } from 'react-redux'
 import Header from '../../../../components/Header'
 import { TuTsauJson } from '../../../../typings/api'
@@ -24,6 +24,7 @@ interface IDetailsProps extends RouteComponentProps<ParamId> {
     hasLike?: boolean
     hideTabbar: () => ReturnType<typeof hideTabbar>
     showTabbar: () => ReturnType<typeof showTabbar>
+    backStateEnter: () => ReturnType<typeof backStateEnter>
 }
 
 const Details: React.FC<IDetailsProps> = (props) => {
@@ -32,6 +33,7 @@ const Details: React.FC<IDetailsProps> = (props) => {
     const [likeColor, setLikeColor] = useState<boolean>(false)
     useEffect(() => {
         props.hideTabbar()
+        props.backStateEnter()
         const { id } = props.match.params
         const params = { userid: store.getState().tokenReducer.id, learningstrategyid: id }
         Axios.get('/api/learning/list', { params: { id } }).then(res => {
@@ -42,7 +44,9 @@ const Details: React.FC<IDetailsProps> = (props) => {
             const { code } = res.data
             code === 200 && setColor(true)
         })
-        return () => { props.showTabbar() }
+        return () => {
+            props.showTabbar()
+        }
     }, [props, props.match.params, props.url])
 
     const successToast = (msg: string): void => Toast.success(msg, 1);
@@ -82,7 +86,7 @@ const Details: React.FC<IDetailsProps> = (props) => {
 
     return (
         <div className={style.cardBox}>
-            <Header name="攻略详情" path="/article/experience"/>
+            <Header name="攻略详情" path={-1}/>
             <Card title={data?.title} bordered={false} headStyle={{fontSize: '.3rem'}} extra={<div className={style.icon}>
                 <LikeIcon style={{color: likeColor ? '#f4ea2a' : 'grey'}} likeCb={onLikeColor} />
                 <CollectIcon style={{color: color ? '#f4ea2a' : 'grey'}} collectCb={onCollectColor} />
@@ -105,7 +109,8 @@ const Details: React.FC<IDetailsProps> = (props) => {
 
 const mapDisPatchToProps = {
     hideTabbar,
-    showTabbar
+    showTabbar,
+    backStateEnter
 }
 
 export default connect(null, mapDisPatchToProps)(withRouter(Details))

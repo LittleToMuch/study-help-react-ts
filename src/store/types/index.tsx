@@ -9,3 +9,5 @@ export const showTabbar = 'show'
 export const hideTabbar = 'hide'
 
 export const changeValue = 'changeValue'
+
+export const changeBackState = 'changeBackState'

@@ -84,7 +84,7 @@ const Details: React.FC<IDetailsProps> = (props) => {
 
     return (
         <div className={style.cardBox}>
-            <Header name="经验详情" path="/article/experience"/>
+            <Header name="经验详情" path={-1}/>
             <Card title={data?.title} bordered={false} headStyle={{fontSize: '.3rem'}} extra={<div className={style.icon}>
                 <LikeIcon style={{color: likeColor ? '#f4ea2a' : 'grey'}} likeCb={onLikeColor} />
                 <CollectIcon style={{color: collectColor ? '#f4ea2a' : 'grey'}} collectCb={onCollectColor} />
@@ -107,7 +107,7 @@ const Details: React.FC<IDetailsProps> = (props) => {
 
 const mapDisPatchToProps = {
     hideTabbar,
-    showTabbar
+    showTabbar,
 }
 
 export default connect(null, mapDisPatchToProps)(withRouter(Details))

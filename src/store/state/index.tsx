@@ -35,3 +35,5 @@ export enum ArticleCategoryEnum {
 }
 
 export type TutsauSearch = string
+
+export type backState = boolean

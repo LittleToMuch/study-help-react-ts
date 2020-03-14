@@ -27,3 +27,7 @@ export interface ArticleJson {
     pic: string
     userid?: number
 }
+
+export interface Data {
+    experienceid: number
+}

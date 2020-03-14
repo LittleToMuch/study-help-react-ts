@@ -7,3 +7,10 @@ export const tutsauSearch = (value: TutsauSearch) => {
         payload: value
     }
 }
+
+export const backStateLeave = () => {
+    return {
+        type: 'changeBackState',
+        payload: false
+    }
+}

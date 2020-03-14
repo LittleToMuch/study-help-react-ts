@@ -1,3 +1,5 @@
+import { Data } from "../typings/api"
+
 export type Debounce = () => void
 export type DebounceFunc = () => void
 export type Throttle = () => void
@@ -79,4 +81,38 @@ export function quickSort<T>(arr: T[]): T[] {
         }
     }
     return sortLoop(arr)
+}
+
+// 数组扁平化
+export function flatten<T> (arr: T[]) {
+    let result: T[] = []
+    for(let i = 0; i < arr.length; i++) {
+        if(Array.isArray(arr[i])) {
+            result = result.concat(flatten(arr[i] as any))
+        } else {
+            result.push(arr[i])
+        }
+    }
+    return result
+}
+
+// 查找点赞数最多
+
+export function GetArrayMost(arr: number[]){
+    var arrMap = new Map();
+    var key = arr[0],
+        value = 1;
+    arr.forEach((item, index) => {
+      if (arrMap.get(item) !== undefined) {
+        let num = arrMap.get(item);
+        arrMap.set(item, ++num);
+      } else {
+        arrMap.set(item, 1);
+      }
+      if (arrMap.get(item) > value) {
+        key = item;
+        value = arrMap.get(item);
+      }
+    });
+    return [key, value];
 }
