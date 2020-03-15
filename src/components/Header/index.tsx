@@ -2,11 +2,13 @@ import React, { ReactElement, useCallback } from "react";
 import { NavBar, Icon } from "antd-mobile";
 import style from './index.module.scss'
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import DropDown from "./DropDown";
 
 interface IHeaderProps extends RouteComponentProps {
     name: string
     path?: string | number
     hasRight?: string
+    hasCategory?: boolean
 }
 
 function Header(props: IHeaderProps): ReactElement {
@@ -29,7 +31,7 @@ function Header(props: IHeaderProps): ReactElement {
         onLeftClick={leftClick}
         rightContent={props.hasRight ? [
           <Icon key="1" type="cross" className={style.iconRotate} onClick={handleClick}/>
-        ]: ''}
+        ]: props.hasCategory ? <DropDown/> : null}
       >
         {props.name}
       </NavBar>

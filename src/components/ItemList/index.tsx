@@ -12,6 +12,8 @@ export interface IItemListProps extends RouteComponentProps {
   createDate: string;
   category: string;
   pic: string;
+  experienceid?: number
+  learningstrategyid?: number
   userid?: number;
   hasDel?: boolean;
   delApi?: string;

@@ -31,3 +31,15 @@ export interface ArticleJson {
 export interface Data {
     experienceid: number
 }
+
+export interface LikeList {
+    id: number
+    userid: number
+    experienceid?: number
+    learningstrategyid?: number
+    createDate: string
+    title: string
+    content: string
+    category: string
+    pic: string
+}

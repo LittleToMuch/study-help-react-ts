@@ -36,7 +36,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <Header name="我的"/>
                 <AvatarBox { ...this.state }/>
                 <NavItem title="我的收藏" path="/png/收藏.png" src="/myCollection"/>
-                <NavItem title="我的提问" path="/png/提问.png" src="/myQuestion"/>
+                <NavItem title="我赞过的" path="/png/提问.png" src="/myQuestion"/>
                 <NavItem title="我的解答" path="/png/解答.png" src="/myAnswer"/>
                 <NavItem title="我的发布" path="/png/发布.png" src="/myIssue"/>
                 <NavItem title="我的吐槽" path="/png/吐槽.png" src="/myTutsau"/>

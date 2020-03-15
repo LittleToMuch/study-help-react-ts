@@ -44,6 +44,11 @@ const Details: React.FC<IDetailsProps> = (props) => {
             const { code } = res.data
             code === 200 && setColor(true)
         })
+        Axios.post('/api/learning/isLike', params).then(res => {
+            const { code } = res.data
+            console.log(code)
+            code === 200 && setLikeColor(true)
+        })
         return () => {
             props.showTabbar()
         }
