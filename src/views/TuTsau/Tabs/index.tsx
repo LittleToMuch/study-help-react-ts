@@ -51,7 +51,7 @@ const Tab: React.FC<ITabProps> = (props) => {
         >
           {
             tabs.map((item: ITabs, index: number) => (
-                <div key={index} style={{backgroundColor: '#fff'}}>
+                <div key={index} style={{backgroundColor: '#fff', marginBottom: '.5rem'}}>
                   {
                     contents.filter((content: ContentListJson) => {
                       return content.category === item.title.toLocaleLowerCase()

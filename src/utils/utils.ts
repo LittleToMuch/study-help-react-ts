@@ -44,7 +44,7 @@ export function throttle(func: ThrottleFunc, timeout: number): Throttle {
 // 文件上传config
 export const config = {
     headers: {
-        'Content-type': 'multipart/form-data'
+        'Content-type': 'multipart/learning-data'
     }
 }
 

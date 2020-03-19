@@ -1,6 +1,8 @@
 .header {
     overflow: hidden;
     height: 45px;
+    z-index: 2;
+    position: relative;
 }
 .iconRotate {
     transform: rotate(45deg);

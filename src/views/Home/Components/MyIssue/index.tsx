@@ -8,6 +8,7 @@ import { WingBlank, SearchBar } from 'antd-mobile'
 import Axios from 'axios'
 import { ContentListJson } from '../../../../utils/apiInterface'
 import ItemList from '../../../../components/ItemList'
+import Tab from './Tab'
 
 interface IMyIssueProps extends RouteComponentProps {
     hideTabbar: () => ReturnType<typeof hideTabbar>
@@ -56,12 +57,7 @@ const MyIssue: React.FC<IMyIssueProps> = (props) => {
         <div>
             <Header name="我的发布" hasRight="/articleModal" path={-1}/>
             <WingBlank size="sm"><SearchBar placeholder="Search" maxLength={14} onChange={handleChange}/></WingBlank>
-            {
-                datalist.length ? datalist.map((item: ContentListJson, index: number) => (
-                    item.title.includes(value) ? 
-                    <ItemList key={index} {...item} hasDel={true} update={update} delApi={item.category === '经验' ? "/api/experience/del" : '/api/learning/del'} detailUrl={item.category === '经验' ? "/experience/detail" : "/learning/detail"}/> : null
-                )) : null
-            }
+            <Tab value=""/>
         </div>
     )
 }

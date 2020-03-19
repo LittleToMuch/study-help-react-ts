@@ -3,6 +3,7 @@ import { LearningStrategyJson } from '../../../utils/apiInterface'
 import ItemList from '../../../components/ItemList';
 import { ArticleJson } from '../../../typings/api';
 import Axios from 'axios';
+import style from './index.module.scss'
 
 export interface ILearningStrategyProps {}
 export interface ILearningStrategyState {
@@ -30,7 +31,7 @@ class LearningStrategy extends Component<ILearningStrategyProps, ILearningStrate
     render() {
         const {renderList} = this.state
         return (
-            <div>
+            <div className={style.learning}>
                 {
                     renderList.length ? renderList.map((item: ArticleJson, index: number) => (
                         <ItemList key={item.id} {...item}  detailUrl="/learning/detail"/>

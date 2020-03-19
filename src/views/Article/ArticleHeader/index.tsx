@@ -4,6 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { WingBlank, SegmentedControl } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { Reducers } from '../../../store/reducers';
+import Hoc from '../../../components/Ceiling'
 export interface IArticleHeaderProps extends RouteComponentProps {
   backState?: boolean
 }
@@ -40,4 +41,4 @@ export const mapStateToProps = (state: Reducers): {backState: boolean} => {
     }
 }
 
-export default connect(mapStateToProps, null)(withRouter(ArticleHeader))
+export default connect(mapStateToProps, null)(withRouter(Hoc(ArticleHeader)))
