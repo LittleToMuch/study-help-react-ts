@@ -19,13 +19,15 @@ export interface ExperienceJson {
 }
 
 export interface VideoJson {
-    id: string | number
+    id: number
     category: string
     video_name: string
     video_path: string
     video_intro: string
-    video_price: string | number
-    adminId?: string | number
+    video_price: number
+    video_pic: string
+    adminId: number
+    createDate: string
 }
 
 export interface ContentListJson {

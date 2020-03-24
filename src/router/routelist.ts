@@ -1,7 +1,7 @@
 import { lazy } from 'react'
-import Experience from '../views/Article/Experience'
-import LearningStrategy from '../views/Article/LearningStrategy'
 
+const Experience = lazy(() => import(/* webpackChunkName: "Experience" */ '../views/Article/Experience'))
+const LearningStrategy = lazy(() => import(/* webpackChunkName: "LearningStrategy" */ '../views/Article/LearningStrategy'))
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ '../views/Home'))
 const Knowledge = lazy(() => import(/* webpackChunkName: "Knowledge" */ '../views/Knowledge'))
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ '../views/Login'))
@@ -22,6 +22,7 @@ const TutsauDetails = lazy(() => import(/* webpackChunkNmae: "TutsauDetails" */'
 const ExperienceDetails = lazy(() => import(/* webpackChunkNmae: "ExperienceDetails" */'../views/Article/Experience/Details'))
 const LearningDetails = lazy(() => import(/* webpackChunkNmae: "LearningDetails" */'../views/Article/LearningStrategy/Details'))
 const ArticleModal = lazy(() => import(/* webpackChunkNmae: "LearningStrategyModal" */ '../views/Article/ArticleModal'))
+const KnowledgeDetail = lazy(() => import(/* webpackChunkNmae: "KnowledgeDetail" */ '../views/Knowledge/Details'))
 
 export interface RouteList {
     path: string
@@ -193,5 +194,12 @@ export const routelist: Array<RouteList> = [
         isAuth: true,
         isShow: false,
         component: ArticleModal
+    },
+    {
+        path: '/knowledge/details/:id',
+        name: '知识汇详情',
+        isAuth: false,
+        isShow: false,
+        component: KnowledgeDetail
     }
 ]
