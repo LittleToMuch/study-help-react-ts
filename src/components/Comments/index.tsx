@@ -121,7 +121,7 @@ const Comments: React.FC<ICommentsProps> = (props) => {
                 <Comment
                 avatar={
                     <Avatar
-                    src={`http://localhost:8080/${store.getState().tokenReducer.avatar}`}
+                    src={`${process.env.REACT_APP_LOCALHOST}/${store.getState().tokenReducer.avatar}`}
                     alt="Han Solo"
                     />
                 }

@@ -1,7 +1,6 @@
 import { lazy } from 'react'
-
+import LearningStrategy from '../views/Article/LearningStrategy'
 const Experience = lazy(() => import(/* webpackChunkName: "Experience" */ '../views/Article/Experience'))
-const LearningStrategy = lazy(() => import(/* webpackChunkName: "LearningStrategy" */ '../views/Article/LearningStrategy'))
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ '../views/Home'))
 const Knowledge = lazy(() => import(/* webpackChunkName: "Knowledge" */ '../views/Knowledge'))
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ '../views/Login'))

@@ -1,9 +1,10 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { List, WingBlank, Button } from "antd-mobile";
 import { timestampToTime } from "../../utils/utils";
 import style from "./index.module.scss";
 import Axios from "axios";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { Spin } from "antd";
 
 export interface IItemListProps extends RouteComponentProps {
   id: number;
@@ -28,6 +29,8 @@ function ItemList(props: IItemListProps) {
   const { id, title, content, createDate, category, pic } = props;
   const time = timestampToTime(createDate).split(" ")[0];
 
+  const [loading, setLoading] = useState<boolean>(true)
+
   const detailClick = useCallback(async () => {
     props.detailUrl && props.history.push(`${props.detailUrl}/${id}`);
   }, [id, props.detailUrl, props.history]);
@@ -46,11 +49,17 @@ function ItemList(props: IItemListProps) {
     [id, props.delApi, props.id, props.update]
   );
 
+  const handleLoad = useCallback(() => {
+    setLoading(false)
+  }, [loading])
+
   return (
     <div>
       <Item onClick={detailClick} platform="android" className={style.item}>
         <div className={style.pic}>
-          <img src={`http://localhost:8080/${pic}`} alt="" />
+          <Spin spinning={loading} size="small">
+            <img className={style.img} src={`${process.env.REACT_APP_LOCALHOST}/${pic}`} onLoad={handleLoad} alt="" />
+          </Spin>
         </div>
         <span className={style.title}>{title}</span>
         <span className={style.category}>{category}</span>

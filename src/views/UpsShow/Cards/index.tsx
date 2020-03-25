@@ -38,7 +38,7 @@ function Cards(props: ICardsProps) {
             {
                 info.length ? info.map((item, index) => (
                    <li key={index}>
-                        <div className={style.pic}><img src={`http://localhost:8080/${item.avatar}`} alt=""/></div>
+                        <div className={style.pic}><img src={`${process.env.REACT_APP_LOCALHOST}/${item.avatar}`} alt=""/></div>
                         <div>
                             姓名:<span>{item.username}</span>
                         </div>

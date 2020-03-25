@@ -14,18 +14,18 @@
   .content {
     display: flex;
 
-    div {
+    div.box {
       flex: 1;
       height: 1.3rem;
       background-color: #fff;
       box-sizing: content-box;
       padding: .1rem;
+
       img {
         width: 100%;
         height: 1rem;
-        display: block;
-        background-color: #61dafb;
       }
+      
       span {
         display: block;
         height: .3rem;

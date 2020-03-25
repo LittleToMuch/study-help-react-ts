@@ -53,7 +53,7 @@ const CommentList: React.FC<ICommentListProps> = (props) => {
                 author={<a>{props.username}</a>}
                 avatar={
                 <Avatar
-                    src={`http://localhost:8080/${props.avatar}`}
+                    src={`${process.env.REACT_APP_LOCALHOST}/${props.avatar}`}
                     alt="Han Solo"
                 />
                 }

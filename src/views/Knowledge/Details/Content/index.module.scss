@@ -1,0 +1,36 @@
+.root {
+  background-color: #fff;
+  padding: 0 .2rem;
+  p.left {
+    font-size: .16rem;
+    font-weight: 800;
+    margin: 0;
+    width: 50%;
+    height: .32rem;
+    float: left;
+    line-height: .32rem;
+  }
+  p.intro {
+    font-size: .15rem;
+    text-indent: 2em;
+    margin: 0;
+    width: 100%;
+  }
+  p.right {
+    float: right;
+    width: 50%;
+    font-size: .12rem;
+    font-weight: normal;
+    text-align: right;
+    display: block;
+    margin: 0;
+    height: .32rem;
+    line-height: .32rem;
+    .category {
+      margin-right: 0;
+    }
+  }
+  div {
+    text-align: right;
+  }
+}

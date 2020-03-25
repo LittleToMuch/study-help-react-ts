@@ -97,7 +97,7 @@ const Details: React.FC<IDetailsProps> = (props) => {
                 <CollectIcon style={{color: color ? '#f4ea2a' : 'grey'}} collectCb={onCollectColor} />
             </div>}>
                 <p className={style.img}>
-                    <img src={`http://localhost:8080/${data?.pic}`} alt=""/>
+                    <img src={`${process.env.REACT_APP_LOCALHOST}/${data?.pic}`} alt=""/>
                 </p>
                 <p>{data?.content}</p>
                 <p className={style.date}>{data?.createDate && timestampToTime(data?.createDate)}</p>

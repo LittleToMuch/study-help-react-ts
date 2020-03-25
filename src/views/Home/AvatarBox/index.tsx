@@ -30,7 +30,7 @@ function AvatarBox(props: IAvatarProps): ReactElement {
     const [loading, changeLoading] = useState<boolean>(false)
 
     const imgUrl = useMemo(() => {
-      return 'http://localhost:8080/' + props.avatar
+      return `${process.env.REACT_APP_LOCALHOST}/${props.avatar}`
     }, [props])
 
     const updateAvatar = useCallback(() => {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import style from './index.module.scss'
 import { VideoJson } from '../../../utils/apiInterface';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Spin } from 'antd';
 
 interface Props extends RouteComponentProps {
   title: string
@@ -9,11 +10,13 @@ interface Props extends RouteComponentProps {
 };
 interface State  {
   renderList: VideoJson[]
+  loading: boolean
 };
 
 class Content extends React.PureComponent<Props, State> {
   public state = {
-    renderList: []
+    renderList: [],
+    loading: true
   }
 
   public componentDidMount() {
@@ -25,15 +28,24 @@ class Content extends React.PureComponent<Props, State> {
     this.props.history.push(`/knowledge/details/${id}`)
   }
 
+  private handleLoad = () => {
+    this.setState({ loading: false })
+  }
+
   public render() {
-    const { renderList } = this.state
+    const { renderList, loading } = this.state
     return (
         <div className={style.root}>
           <p>{this.props.title}</p>
           <div className={style.content}>
             {
               renderList.length ? renderList.map((item: VideoJson) => (
-                <div key={item.id}><img src={`http://localhost:8080/${item.video_pic}`} alt="" onClick={this.handleClick.bind(this, item.id)}/><span>{ item.video_name }</span></div>
+                <div key={item.id} className={style.box}>
+                  <Spin spinning={loading} size="small" className={style.spin}>
+                    <img src={`${process.env.REACT_APP_LOCALHOST}/${item.video_pic}`} onLoad={this.handleLoad} onClick={this.handleClick.bind(this, item.id)}/>
+                  </Spin>
+                  <span>{ item.video_name }</span>
+                </div>
               )) : null
             }
           </div>

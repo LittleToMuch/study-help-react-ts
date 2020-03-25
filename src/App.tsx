@@ -3,6 +3,7 @@ import Tabbar from './components/Tabbar';
 import Header from './components/Header';
 import { connect } from 'react-redux';
 import { Reducers } from './store/reducers';
+import { hot } from 'react-hot-loader';
 // import './App.css';
 
 export interface IAppProps {
