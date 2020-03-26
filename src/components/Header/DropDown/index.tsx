@@ -1,20 +1,34 @@
 import React from 'react'
 import {Dropdown, Menu} from "antd";
 import { UnorderedListOutlined } from '@ant-design/icons';
-interface IDropDownProps {
+import { connect } from 'react-redux';
+import { isPay, noPay } from './actionCreater'
+import { Reducers } from '../../../store/reducers';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+
+interface IDropDownProps extends RouteComponentProps {
+  isPay: () => ReturnType<typeof isPay>
+  noPay: () => ReturnType<typeof noPay>
+  id: number
 }
-const handleClick = (e: any) => {
-  console.log(e)
-}
-const menu = (
+
+const DropDown: React.FC<IDropDownProps> = (props) => {
+  const handleClick = (e: any) => {
+    if (e.key == 0) {
+      props.noPay()
+    } else {
+      props.id ? props.isPay() : props.history.push(`/login`)
+    }
+  }
+
+  const menu = (
     <Menu onClick={handleClick}>
       <Menu.Item key={0}>推荐/免费</Menu.Item>
       <Menu.Divider />
       <Menu.Item key={1}>付费</Menu.Item>
     </Menu>
-);
-
-const DropDown: React.FC<IDropDownProps> = (props) => {
+  );
+  
   return (
       <div>
         <Dropdown overlay={menu} trigger={['click']}>
@@ -24,4 +38,15 @@ const DropDown: React.FC<IDropDownProps> = (props) => {
   )
 }
 
-export default DropDown
+const mapStateToProps = (store: Reducers) => {
+  return {
+    id: store.tokenReducer.id
+  }
+}
+
+const mapDispatchToProps = {
+  isPay,
+  noPay
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DropDown))

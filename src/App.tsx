@@ -3,10 +3,11 @@ import Tabbar from './components/Tabbar';
 import Header from './components/Header';
 import { connect } from 'react-redux';
 import { Reducers } from './store/reducers';
-import { hot } from 'react-hot-loader';
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 // import './App.css';
 
-export interface IAppProps {
+export interface IAppProps extends RouteComponentProps {
   children?: React.ReactNode
   isShow: boolean
 }
@@ -32,4 +33,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

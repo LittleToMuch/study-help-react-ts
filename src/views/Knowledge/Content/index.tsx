@@ -32,11 +32,16 @@ class Content extends React.PureComponent<Props, State> {
     this.setState({ loading: false })
   }
 
+  private moreClick = () => {
+    const param = encodeURIComponent(this.props.title)
+    this.props.history.push(`/konwledge/more/${param}`)
+  }
+
   public render() {
     const { renderList, loading } = this.state
     return (
         <div className={style.root}>
-          <p>{this.props.title}</p>
+          <p>{this.props.title}<span onClick={this.moreClick.bind(this)}>更多></span></p>
           <div className={style.content}>
             {
               renderList.length ? renderList.map((item: VideoJson) => (

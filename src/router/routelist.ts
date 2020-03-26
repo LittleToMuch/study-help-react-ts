@@ -17,11 +17,12 @@ const MyCollection = lazy(() => import( /* webpackChunkName: "MyCollection" */ '
 const MyAnswer = lazy(() => import( /* webpackChunkName: "MyAnswer" */ '../views/Home/Components/MyAnswer'))
 const HasBuy = lazy(() => import( /* webpackChunkName: "HasBuy" */ '../views/Home/Components/HasBuy'))
 const UpsShowList = lazy(() => import(/* webpackChunkName: "UpsshowList" */'../views/UpsShow/UpshowList'))
-const TutsauDetails = lazy(() => import(/* webpackChunkNmae: "TutsauDetails" */'../views/TuTsau/TutsauDetails'))
-const ExperienceDetails = lazy(() => import(/* webpackChunkNmae: "ExperienceDetails" */'../views/Article/Experience/Details'))
-const LearningDetails = lazy(() => import(/* webpackChunkNmae: "LearningDetails" */'../views/Article/LearningStrategy/Details'))
-const ArticleModal = lazy(() => import(/* webpackChunkNmae: "LearningStrategyModal" */ '../views/Article/ArticleModal'))
-const KnowledgeDetail = lazy(() => import(/* webpackChunkNmae: "KnowledgeDetail" */ '../views/Knowledge/Details'))
+const TutsauDetails = lazy(() => import(/* webpackChunkName: "TutsauDetails" */'../views/TuTsau/TutsauDetails'))
+const ExperienceDetails = lazy(() => import(/* webpackChunkName: "ExperienceDetails" */'../views/Article/Experience/Details'))
+const LearningDetails = lazy(() => import(/* webpackChunkName: "LearningDetails" */'../views/Article/LearningStrategy/Details'))
+const ArticleModal = lazy(() => import(/* webpackChunkName: "LearningStrategyModal" */ '../views/Article/ArticleModal'))
+const KnowledgeDetail = lazy(() => import(/* webpackChunkName: "KnowledgeDetail" */ '../views/Knowledge/Details'))
+const VideoMore = lazy(() => import(/* webpackChunkName: "VideoMore" */ '../views/Knowledge/More'))
 
 export interface RouteList {
     path: string
@@ -200,5 +201,12 @@ export const routelist: Array<RouteList> = [
         isAuth: false,
         isShow: false,
         component: KnowledgeDetail
+    },
+    {
+        path: '/konwledge/more/:id',
+        name: '更多视频',
+        isAuth: false,
+        isShow: false,
+        component: VideoMore
     }
 ]

@@ -55,3 +55,7 @@ td, th {
 td:not([align]), th:not([align]) {
   text-align: left;
 }
+
+.icon-wodedangxuan {
+  font-weight: 800;
+}

@@ -11,19 +11,16 @@ import router from './router'
 // const rem = document.documentElement.clientWidth / 10
 // document.documentElement.style.fontSize = rem + 'px'
 
-const render = (Component: JSX.Element) => {
-    ReactDOM.render(
+
+ReactDOM.render(
     <Provider store={store}>
-        {Component}
+        {router}
     </Provider>,
-    document.getElementById('root'));
-}
+    document.getElementById('root')
+);
 
-render(router)
 
-if (module.hot) {
-    module.hot.accept()
-}
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

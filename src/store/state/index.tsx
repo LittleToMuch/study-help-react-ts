@@ -5,6 +5,8 @@ export interface StoreState1 {
 
 export type Tabbar = boolean
 
+export type IsPay = boolean
+
 export interface StoreToken {
     id: number
     username: string

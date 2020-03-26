@@ -11,3 +11,6 @@ export const hideTabbar = 'hide'
 export const changeValue = 'changeValue'
 
 export const changeBackState = 'changeBackState'
+
+export const ISPAY = 'ISPAY'
+export const NOPAY = 'NOPAY'

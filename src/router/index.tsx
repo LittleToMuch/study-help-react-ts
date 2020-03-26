@@ -1,40 +1,40 @@
-import {Route, BrowserRouter as Router, Redirect, Switch, RouteComponentProps} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Redirect, Switch, RouteComponentProps, withRouter } from 'react-router-dom'
 import React, { Suspense } from 'react'
 import App from '../App'
 import Loading from '../components/Loading'
 import { routelist, RouteList } from './routelist'
-
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 const isLogin = () => localStorage.getItem("token")
 const routerlist = (item: RouteList) => {
-    if(item.children) {
+    if (item.children) {
         return <Route key={item.path} path={item.path} render={(props: RouteComponentProps) => (
-            <item.component { ...props }>
+            <item.component {...props}>
                 <Switch>
                     {item.children!.map(key => (
                         routerlist(key)
                     ))}
-                    <Redirect from={item.path} to={item.children![0].path}/>
+                    <Redirect from={item.path} to={item.children![0].path} />
                 </Switch>
             </item.component>
-        )}/>
-    }else {
-       return item.isAuth ? <Route key={item.path} path={item.path} render={(props: RouteComponentProps) => (
-           isLogin() ? <item.component { ...props } exact/> : <Redirect to="/login"/>
-       )}/> : <Route key={item.path} path={item.path} component={item.component} exact/> 
+        )} />
+    } else {
+        return item.isAuth ? <Route key={item.path} path={item.path} render={(props: RouteComponentProps) => (
+            isLogin() ? <item.component {...props} exact /> : <Redirect to="/login" />
+        )} /> : <Route key={item.path} path={item.path} component={item.component} exact />
     }
 }
 const router = (
     <Router>
         <App>
             <Switch>
-                <Suspense fallback={ <Loading /> }>
+                <Suspense fallback={<Loading />}>
                     {
                         routelist.map(item => {
-                            return routerlist(item) 
+                            return routerlist(item)
                         })
                     }
                     <Redirect from="/" to="/article" />
-               </Suspense>
+                </Suspense>
             </Switch>
         </App>
     </Router>

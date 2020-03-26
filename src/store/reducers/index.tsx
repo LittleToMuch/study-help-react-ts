@@ -6,6 +6,7 @@ import tutsauCategory from './tutsauCategory'
 import articleCategory from './articleCategory'
 import tutsauSearch from './tutsauSearch'
 import backState from './backState'
+import isPay from './isPay'
 import * as storeState from '../state'
 
 export interface Reducers{
@@ -16,6 +17,7 @@ export interface Reducers{
   tutsauSearch: storeState.TutsauSearch
   articleCategory: storeState.ArticleCategory
   backState: storeState.backState
+  isPay: storeState.IsPay
 }
 
 let reducers: ReducersMapObject = {
@@ -25,7 +27,8 @@ let reducers: ReducersMapObject = {
   tutsauCategory,
   tutsauSearch,
   articleCategory,
-  backState
+  backState,
+  isPay
 }
 
 export const combineReducer: Reducer<Reducers> = combineReducers<Reducers>(reducers)

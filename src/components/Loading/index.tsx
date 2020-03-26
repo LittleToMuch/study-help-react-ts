@@ -1,7 +1,8 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import { Toast, WingBlank, WhiteSpace } from "antd-mobile";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-interface ILoadingProps {}
+interface ILoadingProps extends RouteComponentProps {}
 
 const Loading: React.FunctionComponent<ILoadingProps> = () => {
   useLayoutEffect(() => {
@@ -16,4 +17,4 @@ const Loading: React.FunctionComponent<ILoadingProps> = () => {
   );
 };
 
-export default Loading;
+export default withRouter(Loading);
