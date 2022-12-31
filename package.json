@@ -20,7 +20,7 @@
     "axios": "^0.19.2",
     "babel-plugin-import": "^1.13.0",
     "customize-cra": "^0.9.1",
-    "flat": "^5.0.0",
+    "flat": "^5.0.1",
     "http-proxy-middleware": "^0.20.0",
     "node-sass": "^4.13.1",
     "rc-form": "^2.4.11",
